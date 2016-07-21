@@ -1,0 +1,17 @@
+{
+    "name": "oktopost/wave",
+    "type": "library",
+    "require": {
+        "oktopost/objection": "^1.0.0",
+        "oktopost/dep-map": "^1.0.0",
+        "phing/phing": "^2.14.0"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alexey Puchkov",
+            "email": "alexey@oktopost.com"
+        }
+    ],
+    "minimum-stability": "stable"
+}
