@@ -1,19 +1,28 @@
 {
     "name": "oktopost/wave",
     "type": "library",
-    "require": {
-        "oktopost/objection": "^1.0.0",
-        "oktopost/dep-map": "^1.0.0",
-        "oktopost/skeleton": "^1.0",
-        "phing/phing": "^2.14.0",
-        "czproject/git-php": "^3.5"
-    },
     "license": "MIT",
-    "authors": [
+    
+	"authors": [
         {
             "name": "Alexey Puchkov",
             "email": "alexey@oktopost.com"
         }
     ],
-    "minimum-stability": "stable"
+
+	"require": {
+		"oktopost/objection": "^1.0.0",
+		"oktopost/dep-map": "^1.0.0",
+		"oktopost/skeleton": "^1.0",
+		"phing/phing": "^2.14.0",
+		"czproject/git-php": "^3.5"
+	},
+	
+    "minimum-stability": "stable",
+
+	"autoload": {
+		"psr-0": {
+			"Wave": "src"
+		}
+	}
 }
