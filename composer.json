@@ -4,7 +4,9 @@
     "require": {
         "oktopost/objection": "^1.0.0",
         "oktopost/dep-map": "^1.0.0",
-        "phing/phing": "^2.14.0"
+        "oktopost/skeleton": "^1.0",
+        "phing/phing": "^2.14.0",
+        "czproject/git-php": "^3.5"
     },
     "license": "MIT",
     "authors": [

@@ -4,20 +4,62 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "882ea9ab29818a2bd8fff4d7d3f17215",
-    "content-hash": "5625fd7785205454dd43e8dde5779ec6",
+    "hash": "6793f2d55da4c20a75a32ff8a8abec86",
+    "content-hash": "573aaf06d81f2508f37d47f5ff7719ea",
     "packages": [
+        {
+            "name": "czproject/git-php",
+            "version": "v3.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/czproject/git-php.git",
+                "reference": "0cc612e67e0ca97bae5c984d8477ca1327a23084"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/czproject/git-php/zipball/0cc612e67e0ca97bae5c984d8477ca1327a23084",
+                "reference": "0cc612e67e0ca97bae5c984d8477ca1327a23084",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "nette/tester": "~1.1.0"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "src/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Jan Pecha",
+                    "email": "janpecha@email.cz"
+                }
+            ],
+            "description": "Library for work with Git repository in PHP.",
+            "keywords": [
+                "git"
+            ],
+            "time": "2016-04-20 07:05:19"
+        },
         {
             "name": "oktopost/dep-map",
             "version": "1.0.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/Oktopost/DepMep.git",
+                "url": "https://github.com/Oktopost/DepMap.git",
                 "reference": "308d9ca90099c857929e3f264adf6a2bc5b9ce25"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Oktopost/DepMep/zipball/308d9ca90099c857929e3f264adf6a2bc5b9ce25",
+                "url": "https://api.github.com/repos/Oktopost/DepMap/zipball/308d9ca90099c857929e3f264adf6a2bc5b9ce25",
                 "reference": "308d9ca90099c857929e3f264adf6a2bc5b9ce25",
                 "shasum": ""
             },
@@ -82,6 +124,45 @@
             "description": "Objects in PHP",
             "homepage": "https://github.com/Oktopost/Objection",
             "time": "2016-07-20 07:10:42"
+        },
+        {
+            "name": "oktopost/skeleton",
+            "version": "1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Oktopost/Skeleton.git",
+                "reference": "67432782fd975dce7f7b33559381d5b35b70e34a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Oktopost/Skeleton/zipball/67432782fd975dce7f7b33559381d5b35b70e34a",
+                "reference": "67432782fd975dce7f7b33559381d5b35b70e34a",
+                "shasum": ""
+            },
+            "require": {
+                "oktopost/objection": "^1.0.0",
+                "php": ">=5.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Skeleton": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alexey Puchkov",
+                    "email": "alexey@oktopost.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Inversion of Control library",
+            "homepage": "https://github.com/Oktopost/Skeleton",
+            "time": "2016-07-20 07:08:58"
         },
         {
             "name": "phing/phing",
