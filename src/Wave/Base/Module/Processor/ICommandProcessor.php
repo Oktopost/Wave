@@ -1,5 +1,5 @@
 <?php
-namespace Wave\Base\Module;
+namespace Wave\Base\Module\Processor;
 
 
 use Wave\Base\Commands\Command;
@@ -9,7 +9,7 @@ use Wave\Base\Commands\IManager;
 /**
  * @skeleton
  */
-interface ICommandSelector
+interface ICommandProcessor
 {
 	/**
 	 * @param IManager $commandManager
@@ -18,7 +18,10 @@ interface ICommandSelector
 	public function setManager(IManager $commandManager);
 	
 	/**
-	 * @return Command|null
+	 * @param Command $command
+	 * @return static
 	 */
-	public function select();
+	public function setCommand(Command $command);
+	
+	public function execute();
 }

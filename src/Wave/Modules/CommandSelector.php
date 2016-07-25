@@ -4,6 +4,7 @@ namespace Wave\Base\Module;
 
 use Wave\Enum\CommandState;
 use Wave\Base\Commands\Command;
+use Wave\Base\Commands\IManager;
 
 
 /**
@@ -11,17 +12,14 @@ use Wave\Base\Commands\Command;
  */
 class CommandSelector implements ICommandSelector
 {
+	/** @var IManager */
+	private $commandManager;
+	
 	/**
 	 * @magic
 	 * @var \Wave\Module\CommandSelector\CommandSelectValidator
 	 */
 	private $validator;
-	
-	/**
-	 * @magic
-	 * @var \Wave\Base\Commands\IManager
-	 */
-	private $commandManager;
 	
 	
 	/**
@@ -46,6 +44,16 @@ class CommandSelector implements ICommandSelector
 		return null;
 	}
 	
+	
+	/**
+	 * @param IManager $commandManager
+	 * @return static
+	 */
+	public function setManager(IManager $commandManager)
+	{
+		$this->commandManager = $commandManager;
+		return $this;
+	}
 	
 	/**
 	 * @return Command|null
