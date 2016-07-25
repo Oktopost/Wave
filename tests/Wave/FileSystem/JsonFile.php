@@ -75,6 +75,28 @@ class JsonFileTest extends \PHPUnit_Framework_TestCase
 	/**
 	 * @expectedException \Wave\Exceptions\FileException
 	 */
+	public function test_readFile_InvalidFile_ErrorThrown()
+	{
+		$jf = $this->createJsonFileWithInvalidFile();
+		$jf->readFile();
+	}
+	
+	public function test_readFile_ValidFile_DataReturned()
+	{
+		$data = [
+			'a' => 12,
+			'b' => [1, 2]
+		];
+		
+		$jf = $this->createJsonFile(json_encode($data, JSON_PRETTY_PRINT));
+		
+		$this->assertEquals($data, $jf->readFile());
+	}
+	
+	
+	/**
+	 * @expectedException \Wave\Exceptions\FileException
+	 */
 	public function test_loadFile_InvalidFile_ErrorThrown()
 	{
 		$jf = $this->createJsonFileWithInvalidFile();

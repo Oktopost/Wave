@@ -19,6 +19,11 @@ interface IJsonFile
 	public function setTarget($file);
 	
 	/**
+	 * @return mixed Result of json_decode
+	 */
+	public function readFile();
+	
+	/**
 	 * @param string $className LiteObject class name.
 	 * @return LiteObject
 	 * @throws FileException

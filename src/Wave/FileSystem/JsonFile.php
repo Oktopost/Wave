@@ -70,6 +70,15 @@ class JsonFile implements IJsonFile
 	}
 	
 	/**
+	 * @return mixed Result of json_decode
+	 */
+	public function readFile()
+	{
+		$this->validateFile();
+		return $this->read();
+	}
+	
+	/**
 	 * @param string $className LiteObject class name.
 	 * @return LiteObject
 	 * @throws FileException
