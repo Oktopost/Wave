@@ -2,6 +2,9 @@
 namespace Wave\Base\Commands;
 
 
+use Wave\Base\ILockEntity;
+
+
 /**
  * @skeleton
  */
@@ -27,7 +30,8 @@ interface IManager
 	
 	public function save();
 	
-	public function lock();
-	
-	public function unlock();
+	/**
+	 * @return ILockEntity
+	 */
+	public function getLockEntity();
 }

@@ -2,9 +2,11 @@
 namespace Wave\Commands;
 
 
+use Wave\Base\ILockEntity;
 use Wave\Base\Commands\IQueue;
 use Wave\Base\Commands\IManager;
 use Wave\Base\Commands\ICommandCreator;
+use Wave\Lock\FileLockEntity;
 
 
 /**
@@ -17,10 +19,7 @@ class Manager implements IManager
 	/** @var IQueue */
 	private $queue;
 	
-	/**
-	 * @magic
-	 * @var \Wave\Base\FileSystem\IFileLock
-	 */
+	/** @var FileLockEntity */
 	private $fileLock;
 	
 	/**
@@ -42,8 +41,12 @@ class Manager implements IManager
 	 */
 	public function setSource($file)
 	{
-		$this->fileLock->set($file);
+		if ($this->fileLock)
+			$this->fileLock->unlock();
+		
+		$this->fileLock = new FileLockEntity($file);
 		$this->file = $file;
+		
 		return $this;
 	}
 	
@@ -76,13 +79,12 @@ class Manager implements IManager
 		$this->queueFile->save($this->queue);
 	}
 	
-	public function lock()
-	{
-		$this->fileLock->lock();
-	}
 	
-	public function unlock()
+	/**
+	 * @return ILockEntity
+	 */
+	public function getLockEntity()
 	{
-		$this->fileLock->unlock();
+		return $this->fileLock;
 	}
 }
