@@ -4,6 +4,7 @@ namespace Wave;
 
 use Skeleton\Type;
 use Skeleton\Skeleton;
+use Skeleton\UnitTestSkeleton;
 use Skeleton\ConfigLoader\PrefixDirectoryConfigLoader;
 
 
@@ -14,6 +15,9 @@ class Scope
 	
 	/** @var Skeleton */
 	private $skeleton;
+	
+	/** @var UnitTestSkeleton */
+	private $testSkeleton;
 	
 	
 	/**
@@ -53,6 +57,32 @@ class Scope
 		else
 		{
 			return $this->skeleton->get($interface);
+		}
+	}
+	
+	/**
+	 * @param string|bool $interface
+	 * @param string|null $implementer
+	 * @return object|UnitTestSkeleton
+	 */
+	public function testSkeleton($interface = false, $implementer = null)
+	{
+		if (!$this->testSkeleton)
+		{
+			$this->testSkeleton = new UnitTestSkeleton($this->skeleton);
+		}
+		
+		if (!$interface)
+		{
+			return $this->testSkeleton;
+		}
+		else if ($implementer)
+		{
+			return $this->testSkeleton->override($interface, $implementer);
+		}
+		else
+		{
+			return $this->testSkeleton->get($interface);
 		}
 	}
 }
