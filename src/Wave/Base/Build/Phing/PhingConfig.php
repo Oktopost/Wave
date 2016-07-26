@@ -2,9 +2,11 @@
 namespace Wave\Base\Build\Phing;
 
 
+use Wave\Scope;
+use Wave\Exceptions\Phing\PhingException;
+
 use Objection\LiteSetup;
 use Objection\LiteObject;
-use Wave\Exceptions\Phing\PhingException;
 
 
 /**
@@ -22,10 +24,10 @@ class PhingConfig extends LiteObject
 	protected function _setup()
 	{
 		return [
-			'PathToPhing'		=> LiteSetup::createString('phing'),
-			'TargetBuildFile'	=> LiteSetup::createString('build.xml'),
+			'PathToPhing'		=> LiteSetup::createString(Scope::instance()->config('phing.executable', 'phing')),
+			'TargetBuildFile'	=> LiteSetup::createString(Scope::instance()->config('phing.build-file', 'build.xml')),
 			'SourceDirectory'	=> LiteSetup::createString(null),
-			'TargetBuild'		=> LiteSetup::createString('build'),
+			'TargetBuild'		=> LiteSetup::createString(Scope::instance()->config('phing.build-target', 'build')),
 			'LogFile'			=> LiteSetup::createString(null)
 		];
 	}

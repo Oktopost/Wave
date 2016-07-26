@@ -2,6 +2,11 @@
 namespace Wave\Base\Module\Build;
 
 
+use Wave\Scope;
+use Wave\Base\FileSystem\ITempDirectory;
+use Wave\Module\Build\BuildMediator;
+use Wave\Module\Build\FinalizeMediator;
+use Wave\Module\Build\TransferToBuildMediator;
 use Wave\Objects\Package;
 
 
@@ -9,6 +14,18 @@ class BuildModule implements IBuild
 {
 	/** @var Package */
 	private $package;
+	
+	
+	/**
+	 * @return ITempDirectory
+	 */
+	private function getTempDir()
+	{
+		/** @var ITempDirectory $tempDir */
+		$tempDir = Scope::instance()->skeleton(ITempDirectory::class);
+		$tempDir->generate();
+		return $tempDir;
+	}
 	
 	
 	/**
@@ -23,20 +40,13 @@ class BuildModule implements IBuild
 	
 	public function build()
 	{
-		// Create TempDir
+		$tempDir	= $this->getTempDir();
+		$transfer 	= new TransferToBuildMediator();
+		$build		= new BuildMediator();
+		$finalize	= new FinalizeMediator();
 		
-		// Lock Source
-		// Switch version 
-		// Copy
-		// Unlock Source
-		
-		// Copy Phing
-		// Build Phing
-		
-		// Run DepMap
-		$this->package->touch();
-		// Save package data
-		
-		// Remove TempDir
+		$transfer->transfer($tempDir, $this->package);
+		$build->build($tempDir, $this->package);
+		$finalize->finalize($tempDir, $this->package);
 	}
 }
