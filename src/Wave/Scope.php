@@ -24,6 +24,9 @@ class Scope
 	/** @var ILog */
 	private $log = null;
 	
+	/** @var Config */
+	private $config = null;
+	
 	
 	/**
 	 * @param static $instance
@@ -100,5 +103,30 @@ class Scope
 			$this->log = $this->skeleton(ILog::class);
 		
 		return $this->log;
+	}
+	
+	/**
+	 * @param bool $key
+	 * @param mixed $default
+	 * @return mixed|string|Config
+	 */
+	public function config($key = false, $default = null)
+	{
+		if (is_null($this->config))
+			$this->config = new Config('wave.ini');
+		
+		return $key ?
+			$this->config->get($key, $default) : 
+			$this->config;
+	}
+	
+	/**
+	 * For unit tests only.
+	 * @todo <alexey> 2016-07-26 Remove unit tests only method.
+	 * @param Config $config
+	 */
+	public function setConfig(Config $config)
+	{
+		$this->config = $config;
 	}
 }
