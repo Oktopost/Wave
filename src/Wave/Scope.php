@@ -2,6 +2,8 @@
 namespace Wave;
 
 
+use Wave\Base\ILog;
+
 use Skeleton\Type;
 use Skeleton\Skeleton;
 use Skeleton\UnitTestSkeleton;
@@ -18,6 +20,9 @@ class Scope
 	
 	/** @var UnitTestSkeleton */
 	private $testSkeleton;
+	
+	/** @var ILog */
+	private $log = null;
 	
 	
 	/**
@@ -84,5 +89,16 @@ class Scope
 		{
 			return $this->testSkeleton->get($interface);
 		}
+	}
+	
+	/**
+	 * @return ILog
+	 */
+	public function log()
+	{
+		if (!$this->log)
+			$this->log = $this->skeleton(ILog::class);
+		
+		return $this->log;
 	}
 }

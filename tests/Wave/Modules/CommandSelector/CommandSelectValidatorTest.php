@@ -2,6 +2,7 @@
 namespace Wave\Module\CommandSelector;
 
 
+use Wave\Base\Module\CommandSelector\ICommandSelectValidator;
 use Wave\Scope;
 use Wave\Enum\CommandType;
 use Wave\Base\Commands\IQueue;
@@ -74,6 +75,19 @@ class CommandSelectValidatorTest extends \PHPUnit_Framework_TestCase
 		$this->validator	= $this->mockValidator();
 		$this->queue		= $this->mockQueue();
 		$this->factory		= $this->mockFactory();
+	}
+	
+	
+	public function test_skeleton()
+	{
+		Scope::instance()->testSkeleton()->clear();
+		
+		$this->mockFactory();
+		$this->mockQueue();
+		
+		$this->assertInstanceOf(
+			CommandSelectValidator::class, 
+			Scope::instance()->skeleton(ICommandSelectValidator::class));
 	}
 	
 	

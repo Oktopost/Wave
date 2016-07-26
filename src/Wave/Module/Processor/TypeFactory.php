@@ -7,8 +7,10 @@ use Wave\Base\Module\Processor\ITypeFactory;
 use Wave\Base\Module\Processor\ITypeProcessor;
 use Wave\Exceptions\WaveException;
 
+use Skeleton\ISingleton;
 
-class TypeFactory implements ITypeFactory
+
+class TypeFactory implements ITypeFactory, ISingleton
 {
 	/**
 	 * @param string $type

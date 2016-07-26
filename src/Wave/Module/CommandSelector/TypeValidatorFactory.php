@@ -7,8 +7,10 @@ use Wave\Base\Module\CommandSelector\ICommandTypeSelectValidator;
 use Wave\Base\Module\CommandSelector\ICommandTypeSelectValidatorFactory;
 use Wave\Exceptions\WaveException;
 
+use Skeleton\ISingleton;
 
-class TypeValidatorFactory implements ICommandTypeSelectValidatorFactory
+
+class TypeValidatorFactory implements ICommandTypeSelectValidatorFactory, ISingleton
 {
 	/**
 	 * @param string $type

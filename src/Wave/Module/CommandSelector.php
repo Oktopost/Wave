@@ -2,6 +2,7 @@
 namespace Wave\Base\Module;
 
 
+use Wave\Base\Module\CommandSelector\ICommandSelector;
 use Wave\Enum\CommandState;
 use Wave\Base\Commands\Command;
 use Wave\Base\Commands\IManager;

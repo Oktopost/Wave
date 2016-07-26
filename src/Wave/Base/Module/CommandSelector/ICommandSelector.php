@@ -1,5 +1,5 @@
 <?php
-namespace Wave\Base\Module;
+namespace Wave\Base\Module\CommandSelector;
 
 
 use Wave\Base\Commands\Command;
