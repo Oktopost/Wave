@@ -1,9 +1,11 @@
 <?php
-namespace Wave\Base\Source;
+namespace Wave\Base\Build;
 
 
 use Wave\Scope;
-use Wave\Source\SourceManagerFactory;
+
+use Wave\Build\Phing\PhingBuilder;
+use Wave\Base\Build\Phing\IPhingBuilder;
 
 
-Scope::instance()->skeleton(ISourceManagerFactory::class, SourceManagerFactory::class);
+Scope::instance()->skeleton(IPhingBuilder::class, PhingBuilder::class);

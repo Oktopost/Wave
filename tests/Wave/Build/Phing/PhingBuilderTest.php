@@ -2,7 +2,9 @@
 namespace Wave\Build\Phing;
 
 
+use Wave\Base\Build\Phing\IPhingBuilder;
 use Wave\Base\Build\Phing\PhingConfig;
+use Wave\Scope;
 
 
 class PhingBuilderTest extends \PHPUnit_Framework_TestCase
@@ -54,6 +56,13 @@ class PhingBuilderTest extends \PHPUnit_Framework_TestCase
 	{
 		if (file_exists($this->getLogFilePath()))
 			unlink($this->getLogFilePath());
+	}
+	
+	
+	public function test_skeleton()
+	{
+		Scope::instance()->testSkeleton()->clear();
+		$this->assertInstanceOf(PhingBuilder::class, Scope::instance()->skeleton(IPhingBuilder::class));
 	}
 	
 	
