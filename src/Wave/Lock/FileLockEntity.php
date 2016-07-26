@@ -3,14 +3,27 @@ namespace Wave\Lock;
 
 
 use Wave\Exceptions\FileException;
+use Wave\Scope;
 
 
 class FileLockEntity extends BaseLockEntity
 {
-	private $file;
+	private $fileName;
 	
 	private $handle = null;
 	
+	/**
+	 * @return string
+	 */
+	private function getLockFilePath()
+	{
+		$lockDir = Scope::instance()->config('lock_dir', '.tmp/lock');
+		
+		if (!is_dir($lockDir) && !mkdir($lockDir, 0750, true))
+			throw new FileException($lockDir, 'Filed to access lock directory');
+		
+		return "$lockDir/$this->fileName";
+	}
 	
 	/**
 	 * @throws FileException
@@ -19,7 +32,7 @@ class FileLockEntity extends BaseLockEntity
 	{
 		$this->doUnlock();
 		throw new FileException(
-			$this->file,
+			$this->fileName,
 			'Could not acquire lock on file. Make sure the directory is writable.');
 	}
 	
@@ -30,13 +43,14 @@ class FileLockEntity extends BaseLockEntity
 	{
 		$this->doUnlock();
 		throw new FileException(
-			$this->file,
+			$this->fileName,
 			'Could not write to the locked file. Make sure the directory and file are writable.');
 	}
 	
 	private function openFileForLock()
 	{
-		$this->handle = fopen('/tmp/wave.run.lock', 'c');
+		$filePath = $this->getLockFilePath();
+		$this->handle = fopen($filePath, 'c');
 		
 		if ($this->handle === false)
 		{
@@ -52,8 +66,11 @@ class FileLockEntity extends BaseLockEntity
 		if (!flock($this->handle, LOCK_EX))
 			$this->throwCouldNotLock();
 		
-		if (fwrite($this->handle, getmypid()) === false)
+		if (fwrite($this->handle, getmypid() . PHP_EOL) === false ||
+			fwrite($this->handle, time()) === false)
+		{
 			$this->throwCouldNotWrite();
+		}
 	}
 	
 	protected function doUnlock()
@@ -89,10 +106,10 @@ class FileLockEntity extends BaseLockEntity
 	
 	
 	/**
-	 * @param string $file
+	 * @param string $fileName
 	 */
-	public function __construct($file) 
+	public function __construct($fileName) 
 	{
-		$this->file = $file;
+		$this->fileName = $fileName;
 	}
 }
