@@ -11,13 +11,26 @@ class PhingConfigTest extends \PHPUnit_Framework_TestCase
 	{
 		$c = new PhingConfig();
 		$c->LogFile = null;
+		$c->SourceDirectory = 'a';
 		$c->validate();
 	}
 	
-	public function test_validate_LogFileIsSet_ErrorNotThrown()
+	/**
+	 * @expectedException \Wave\Exceptions\Phing\PhingException
+	 */
+	public function test_validate_SourceDirectoryIsNull_ErrorThrown()
 	{
 		$c = new PhingConfig();
 		$c->LogFile = 'a';
+		$c->SourceDirectory = null;
+		$c->validate();
+	}
+	
+	public function test_validate_ValidConfig_ErrorNotThrown()
+	{
+		$c = new PhingConfig();
+		$c->LogFile = 'a';
+		$c->SourceDirectory = 'a';
 		$c->validate();
 	}
 }

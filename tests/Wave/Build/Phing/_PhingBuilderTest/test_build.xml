@@ -1,0 +1,9 @@
+<project name="Wave_Test" default="test-build">
+	<target name="test-build">
+		<touch file="a.file"/>
+	</target>
+	
+	<target name="fail">
+		<fail message="failing" />
+	</target>
+</project>

@@ -10,6 +10,7 @@ use Wave\Exceptions\Phing\PhingException;
 /**
  * @property string $PathToPhing
  * @property string $TargetBuildFile
+ * @property string $SourceDirectory
  * @property string $TargetBuild
  * @property string $LogFile
  */
@@ -23,6 +24,7 @@ class PhingConfig extends LiteObject
 		return [
 			'PathToPhing'		=> LiteSetup::createString('phing'),
 			'TargetBuildFile'	=> LiteSetup::createString('build.xml'),
+			'SourceDirectory'	=> LiteSetup::createString(null),
 			'TargetBuild'		=> LiteSetup::createString('build'),
 			'LogFile'			=> LiteSetup::createString(null)
 		];
@@ -36,5 +38,8 @@ class PhingConfig extends LiteObject
 	{
 		if (is_null($this->LogFile))
 			throw new PhingException('Unexpected exception: Log file is not set');
+		
+		if (is_null($this->SourceDirectory))
+			throw new PhingException('Unexpected exception: Source directory not set');
 	}
 }
