@@ -3,7 +3,7 @@ namespace Wave;
 
 
 use Wave\Source\Git\GitSource;
-use Wave\Source\SourceManagerFactory;
+use Wave\Source\SourceConnectorFactory;
 
 
 class SourceManagerFactoryTest extends \PHPUnit_Framework_TestCase
@@ -13,7 +13,7 @@ class SourceManagerFactoryTest extends \PHPUnit_Framework_TestCase
 	 */
 	public function test_get_InvalidType_ErrorThrown()
 	{
-		(new SourceManagerFactory())->get('invalid');
+		(new SourceConnectorFactory())->getConnector('invalid');
 	}
 	
 	/**
@@ -21,12 +21,12 @@ class SourceManagerFactoryTest extends \PHPUnit_Framework_TestCase
 	 */
 	public function test_get_SvnType_ErrorThrown()
 	{
-		(new SourceManagerFactory())->get('svn');
+		(new SourceConnectorFactory())->getConnector('svn');
 	}
 	
 	public function test_get_GitType_GitSourceReturned()
 	{
-		$manager = (new SourceManagerFactory())->get('git');
+		$manager = (new SourceConnectorFactory())->getConnector('git');
 		$this->assertInstanceOf(GitSource::class, $manager);
 	}
 }

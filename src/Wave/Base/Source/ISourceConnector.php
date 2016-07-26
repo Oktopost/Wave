@@ -2,16 +2,17 @@
 namespace Wave\Base\Source;
 
 
-use Wave\Exceptions\InvalidSourceDirectoryException;
-
-
-interface ISourceManager
+interface ISourceConnector
 {
 	/**
-	 * @param string $source
-	 * @throws InvalidSourceDirectoryException
+	 * @param string $version
 	 */
-	public function setSourceDirectory($source);
+	public function switchToVersion($version);
+	
+	/**
+	 * @param string $directory
+	 */
+	public function copyContentIntoDir($directory);
 	
 	/**
 	 * @param string $id

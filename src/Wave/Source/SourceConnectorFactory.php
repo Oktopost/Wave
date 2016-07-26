@@ -3,8 +3,8 @@ namespace Wave\Source;
 
 
 use Wave\Enum\SourceType;
-use Wave\Base\Source\ISourceManager;
-use Wave\Base\Source\ISourceManagerFactory;
+use Wave\Base\Source\ISourceConnector;
+use Wave\Base\Source\ISourceConnectorFactory;
 
 use Wave\Scope;
 use Wave\Source\Git\GitSource;
@@ -13,13 +13,13 @@ use Wave\Exceptions\WaveException;
 use Skeleton\ISingleton;
 
 
-class SourceManagerFactory implements ISourceManagerFactory, ISingleton
+class SourceConnectorFactory implements ISourceConnectorFactory, ISingleton
 {
 	/**
 	 * @param string $type
-	 * @return ISourceManager
+	 * @return ISourceConnector
 	 */
-	public function get($type)
+	public function getConnector($type)
 	{
 		switch ($type)
 		{

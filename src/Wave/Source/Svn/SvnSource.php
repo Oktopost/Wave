@@ -2,20 +2,27 @@
 namespace Wave\Source\Svn;
 
 
-use Wave\Base\Source\ISourceManager;
 use Wave\Base\Source\ISourceVersion;
+use Wave\Base\Source\ISourceConnector;
 use Wave\Exceptions\InvalidSourceDirectoryException;
 
 
-class SvnSource implements ISourceManager
+class SvnSource implements ISourceConnector
 {
 	/**
-	 * @param string $source
-	 * @throws InvalidSourceDirectoryException
+	 * @param string $version
 	 */
-	public function setSourceDirectory($source)
+	public function switchToVersion($version)
 	{
-		// TODO: Implement setSourceDirectory() method.
+		
+	}
+	
+	/**
+	 * @param string $directory
+	 */
+	public function copyContentIntoDir($directory)
+	{
+		
 	}
 	
 	/**

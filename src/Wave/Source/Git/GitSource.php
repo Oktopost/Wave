@@ -2,15 +2,15 @@
 namespace Wave\Source\Git;
 
 
-use Wave\Base\Source\ISourceManager;
 use Wave\Base\Source\ISourceVersion;
+use Wave\Base\Source\ISourceConnector;
 use Wave\Exceptions\InvalidSourceDirectoryException;
 
 
 /**
  * @magic
  */
-class GitSource implements ISourceManager
+class GitSource implements ISourceConnector
 {
 	/**
 	 * @var \Wave\Base\Git\IGitAPI
@@ -20,13 +20,21 @@ class GitSource implements ISourceManager
 	
 	
 	/**
-	 * @param string $source
-	 * @throws InvalidSourceDirectoryException
+	 * @param string $version
 	 */
-	public function setSourceDirectory($source)
+	public function switchToVersion($version)
 	{
-		// TODO: Implement setSourceDirectory() method.
+		
 	}
+	
+	/**
+	 * @param string $directory
+	 */
+	public function copyContentIntoDir($directory)
+	{
+		
+	}
+	
 	
 	/**
 	 * @param string $id

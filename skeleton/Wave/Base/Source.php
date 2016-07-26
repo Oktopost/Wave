@@ -3,7 +3,9 @@ namespace Wave\Base\Source;
 
 
 use Wave\Scope;
-use Wave\Source\SourceManagerFactory;
+use Wave\Source\Source;
+use Wave\Source\SourceConnectorFactory;
 
 
-Scope::instance()->skeleton(ISourceManagerFactory::class, SourceManagerFactory::class);
+Scope::instance()->skeleton(ISource::class, Source::class);
+Scope::instance()->skeleton(ISourceConnectorFactory::class, SourceConnectorFactory::class);
