@@ -47,7 +47,7 @@ class GitSource implements ISourceConnector
 			{
 				throw new FileException(
 					$item,
-					'Failed to copy directroy/file. Output: ' . implode(' \\ ', $output)
+					'Failed to copy directory/file. Output: ' . implode(' \\ ', $output)
 				);
 			}
 		}
