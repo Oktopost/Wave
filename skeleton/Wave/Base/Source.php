@@ -7,5 +7,5 @@ use Wave\Source\Source;
 use Wave\Source\SourceConnectorFactory;
 
 
-Scope::instance()->skeleton(ISource::class, Source::class);
-Scope::instance()->skeleton(ISourceConnectorFactory::class, SourceConnectorFactory::class);
+Scope::skeleton(ISource::class, Source::class);
+Scope::skeleton(ISourceConnectorFactory::class, SourceConnectorFactory::class);

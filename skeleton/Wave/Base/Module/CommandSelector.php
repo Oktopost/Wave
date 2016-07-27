@@ -9,6 +9,6 @@ use Wave\Module\CommandSelector\TypeValidatorFactory;
 use Wave\Module\CommandSelector\CommandSelectValidator;
 
 
-Scope::instance()->skeleton(ICommandSelector::class, CommandSelector::class);
-Scope::instance()->skeleton(ICommandSelectValidator::class, CommandSelectValidator::class);
-Scope::instance()->skeleton(ICommandTypeSelectValidatorFactory::class, TypeValidatorFactory::class);
+Scope::skeleton(ICommandSelector::class, CommandSelector::class);
+Scope::skeleton(ICommandSelectValidator::class, CommandSelectValidator::class);
+Scope::skeleton(ICommandTypeSelectValidatorFactory::class, TypeValidatorFactory::class);

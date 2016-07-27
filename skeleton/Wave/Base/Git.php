@@ -6,4 +6,4 @@ use Wave\Scope;
 use Wave\Source\Git\GitAPI;
 
 
-Scope::instance()->skeleton(IGitAPI::class, GitAPI::class);
+Scope::skeleton(IGitAPI::class, GitAPI::class);

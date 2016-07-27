@@ -18,7 +18,7 @@ class FinalizeMediator
 	 */
 	public function finalize(ITempDirectory $temp, Package $package)
 	{
-		$localStaging = Scope::instance()->skeleton(ILocalStaging::class);
+		$localStaging = Scope::skeleton(ILocalStaging::class);
 		
 		$package->touch();
 		$localStaging->savePackage($package);

@@ -19,7 +19,7 @@ class TempDirectory implements ITempDirectory
 	 */
 	private function generateRelativePath()
 	{
-		$globalTempDir = Scope::instance()->config('temp_directory', '.tmp');
+		$globalTempDir = Scope::instance()->config('temp.dir', '.tmp');
 		$tempDir = time() . '.' . getmypid() . '-' . self::$index++ . '-tmp';
 		return "$globalTempDir/$tempDir";
 	}

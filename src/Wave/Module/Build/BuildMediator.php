@@ -22,7 +22,7 @@ class BuildMediator
 	 */
 	private function getLogFile(Package $package)
 	{
-		$logDir = Scope::instance()->config('phing.log-dir', 'log/phing');
+		$logDir = Scope::instance()->config('phing.log-dir', 'Log/phing');
 		$logDirFullPath = realpath($logDir);
 		
 		if (!$logDirFullPath || !is_dir($logDirFullPath))
@@ -49,9 +49,8 @@ class BuildMediator
 		$pc->TargetBuild		= $package->BuildTarget;
 		$pc->SourceDirectory	= $buildDir;
 		
-		// Copy Phing
 		/** @var IPhingBuilder $phingBuild */
-		$phingBuild = Scope::instance()->skeleton(IPhingBuilder::class);
+		$phingBuild = Scope::skeleton(IPhingBuilder::class);
 		$phingBuild->setConfig($pc);
 		
 		return $phingBuild;
@@ -78,7 +77,7 @@ class BuildMediator
 	 */
 	public function build(ITempDirectory $temp, Package $package)
 	{
-		$localStaging	= Scope::instance()->skeleton(ILocalStaging::class);
+		$localStaging	= Scope::skeleton(ILocalStaging::class);
 		$phingBuilder	= $this->getPhingBuildObject($temp->get(), $package);
 		$packageDir		= $localStaging->getDirectoryForPackage($package);
 		

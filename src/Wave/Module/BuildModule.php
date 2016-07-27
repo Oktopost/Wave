@@ -22,7 +22,7 @@ class BuildModule implements IBuild
 	private function getTempDir()
 	{
 		/** @var ITempDirectory $tempDir */
-		$tempDir = Scope::instance()->skeleton(ITempDirectory::class);
+		$tempDir = Scope::skeleton(ITempDirectory::class);
 		$tempDir->generate();
 		return $tempDir;
 	}

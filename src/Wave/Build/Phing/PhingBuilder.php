@@ -2,12 +2,12 @@
 namespace Wave\Build\Phing;
 
 
+use Wave\Scope;
 use Wave\Base\Build\Phing\PhingConfig;
 use Wave\Base\Build\Phing\IPhingBuilder;
 
 use Wave\Exceptions\WaveUnexpectedException;
 use Wave\Exceptions\Phing\PhingException;
-use Wave\Scope;
 
 
 class PhingBuilder implements IPhingBuilder

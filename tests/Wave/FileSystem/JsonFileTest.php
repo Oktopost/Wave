@@ -53,14 +53,6 @@ class JsonFileTest extends \PHPUnit_Framework_TestCase
 	/**
 	 * @expectedException \Wave\Exceptions\FileException
 	 */
-	public function test_setTarget_FileNotFound_ExceptionThrown()
-	{
-		(new JsonFile())->setTarget('/tmp/invalid_file_for_json_file_test.json');
-	}
-	
-	/**
-	 * @expectedException \Wave\Exceptions\FileException
-	 */
 	public function test_setTarget_FileNotJson_ExceptionThrown()
 	{
 		(new JsonFile())->setTarget($this->createFileWith('[]', '/tmp/not_json_file_for_json_file_test.php'));
@@ -189,15 +181,6 @@ class JsonFileTest extends \PHPUnit_Framework_TestCase
 	}
 	
 	
-	/**
-	 * @expectedException \Wave\Exceptions\FileException
-	 */
-	public function test_save_InvalidFile_ErrorThrown()
-	{
-		$jf = $this->createJsonFileWithInvalidFile();
-		$jf->save(new JsonFileTest_Help());
-	}
-	
 	public function test_save_DataSaved()
 	{
 		$object = new JsonFileTest_Help();
@@ -212,15 +195,6 @@ class JsonFileTest extends \PHPUnit_Framework_TestCase
 			file_get_contents('/tmp/JsonFileTest.json'));
 	}
 	
-	
-	/**
-	 * @expectedException \Wave\Exceptions\FileException
-	 */
-	public function test_saveAll_InvalidFile_ErrorThrown()
-	{
-		$jf = $this->createJsonFileWithInvalidFile();
-		$jf->saveAll([]);
-	}
 	
 	public function test_saveAll_NoObjects_EmptyArraySaved()
 	{

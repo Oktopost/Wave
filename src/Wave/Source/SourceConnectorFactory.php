@@ -34,6 +34,6 @@ class SourceConnectorFactory implements ISourceConnectorFactory, ISingleton
 				throw new WaveException("Unexpected source type! Got '$type'");
 		}
 		
-		return Scope::instance()->skeleton()->load($sourceClass);
+		return Scope::skeleton()->load($sourceClass);
 	}
 }

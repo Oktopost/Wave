@@ -7,5 +7,5 @@ use Wave\FileSystem\JsonFile;
 use Wave\FileSystem\TempDirectory;
 
 
-Scope::instance()->skeleton(IJsonFile::class, JsonFile::class);
-Scope::instance()->skeleton(ITempDirectory::class, TempDirectory::class);
+Scope::skeleton(IJsonFile::class, JsonFile::class);
+Scope::skeleton(ITempDirectory::class, TempDirectory::class);

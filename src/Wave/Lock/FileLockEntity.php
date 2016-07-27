@@ -17,7 +17,7 @@ class FileLockEntity extends BaseLockEntity
 	 */
 	private function getLockFilePath()
 	{
-		$lockDir = Scope::instance()->config('lock_dir', '.tmp/lock');
+		$lockDir = Scope::instance()->config('lock.dir', '.tmp/lock');
 		
 		if (!is_dir($lockDir) && !mkdir($lockDir, 0750, true))
 			throw new FileException($lockDir, 'Filed to access lock directory');

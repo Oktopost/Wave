@@ -64,7 +64,7 @@ class CommandSelectValidatorTest extends \PHPUnit_Framework_TestCase
 	 */
 	private function getCommandSelectValidator()
 	{
-		$a = Scope::instance()->skeleton()->load(CommandSelectValidator::class);
+		$a = Scope::skeleton()->load(CommandSelectValidator::class);
 		$a->setQueue($this->mockQueue());
 		return $a;
 	}
@@ -87,7 +87,7 @@ class CommandSelectValidatorTest extends \PHPUnit_Framework_TestCase
 		
 		$this->assertInstanceOf(
 			CommandSelectValidator::class, 
-			Scope::instance()->skeleton(ICommandSelectValidator::class));
+			Scope::skeleton(ICommandSelectValidator::class));
 	}
 	
 	

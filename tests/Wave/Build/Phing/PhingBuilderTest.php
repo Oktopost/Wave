@@ -62,7 +62,7 @@ class PhingBuilderTest extends \PHPUnit_Framework_TestCase
 	public function test_skeleton()
 	{
 		Scope::instance()->testSkeleton()->clear();
-		$this->assertInstanceOf(PhingBuilder::class, Scope::instance()->skeleton(IPhingBuilder::class));
+		$this->assertInstanceOf(PhingBuilder::class, Scope::skeleton(IPhingBuilder::class));
 	}
 	
 	

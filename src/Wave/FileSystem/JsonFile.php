@@ -18,11 +18,19 @@ class JsonFile implements IJsonFile
 	 */
 	private function validateFile()
 	{
-		if (!is_readable($this->file) || !is_writable($this->file))
-			throw new FileException($this->file, 'File must be both readable and writable by the user running Wave');
-		
 		if (substr($this->file, strlen($this->file) - 4) != 'json')
 			throw new FileException($this->file, 'File must be a json file');
+	}
+	
+	/**
+	 * @throws FileException
+	 */
+	private function validateFileRead()
+	{
+		if (!is_readable($this->file) || !is_writable($this->file))
+		throw new FileException($this->file, 'File must be both readable and writable by the user running Wave');
+		
+		$this->validateFile();
 	}
 	
 	/**
@@ -31,7 +39,6 @@ class JsonFile implements IJsonFile
 	private function write(array $data)
 	{
 		$encodedData = json_encode($data, JSON_PRETTY_PRINT);
-		$this->validateFile();
 		
 		if (file_put_contents($this->file, $encodedData, LOCK_EX) === false)
 		{
@@ -44,7 +51,7 @@ class JsonFile implements IJsonFile
 	 */
 	private function read()
 	{
-		$this->validateFile();
+		$this->validateFileRead();
 		$content = file_get_contents($this->file);
 		
 		if ($content === false)
@@ -74,7 +81,7 @@ class JsonFile implements IJsonFile
 	 */
 	public function readFile()
 	{
-		$this->validateFile();
+		$this->validateFileRead();
 		return $this->read();
 	}
 	
@@ -85,7 +92,7 @@ class JsonFile implements IJsonFile
 	 */
 	public function loadFile($className)
 	{
-		$this->validateFile();
+		$this->validateFileRead();
 		
 		/** @var LiteObject $object */
 		$object = new $className;
@@ -100,7 +107,7 @@ class JsonFile implements IJsonFile
 	 */
 	public function loadAll($className)
 	{
-		$this->validateFile();
+		$this->validateFileRead();
 		
 		/** @var LiteObject $className */
 		return $className::allFromArray($this->read());

@@ -17,7 +17,7 @@ class TransferToBuildMediator
 	 */
 	private function getSource()
 	{
-		return Scope::instance()->skeleton(ISource::class);
+		return Scope::skeleton(ISource::class);
 	}
 	
 	/**

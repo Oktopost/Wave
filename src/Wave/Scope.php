@@ -49,28 +49,6 @@ class Scope
 	/**
 	 * @param string|bool $interface
 	 * @param string|null $implementer
-	 * @param int $type
-	 * @return object|\Skeleton\Skeleton
-	 */
-	public function skeleton($interface = false, $implementer = null, $type = Type::Instance)
-	{
-		if (!$interface)
-		{
-			return $this->skeleton;
-		}
-		else if ($implementer)
-		{
-			return $this->skeleton->set($interface, $implementer, $type);
-		}
-		else
-		{
-			return $this->skeleton->get($interface);
-		}
-	}
-	
-	/**
-	 * @param string|bool $interface
-	 * @param string|null $implementer
 	 * @return object|UnitTestSkeleton
 	 */
 	public function testSkeleton($interface = false, $implementer = null)
@@ -128,5 +106,36 @@ class Scope
 	public function setConfig(Config $config)
 	{
 		$this->config = $config;
+	}
+	
+	
+	/**
+	 * @return string
+	 */
+	public static function rootDir()
+	{
+		return getcwd();
+	}
+	
+	/**
+	 * @param string|bool $interface
+	 * @param string|null $implementer
+	 * @param int $type
+	 * @return object|\Skeleton\Skeleton
+	 */
+	public static function skeleton($interface = false, $implementer = null, $type = Type::Instance)
+	{
+		if (!$interface)
+		{
+			return self::instance()->skeleton;
+		}
+		else if ($implementer)
+		{
+			return self::instance()->skeleton->set($interface, $implementer, $type);
+		}
+		else
+		{
+			return self::instance()->skeleton->get($interface);
+		}
 	}
 }

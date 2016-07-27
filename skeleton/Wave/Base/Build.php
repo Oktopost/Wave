@@ -8,4 +8,4 @@ use Wave\Build\Phing\PhingBuilder;
 use Wave\Base\Build\Phing\IPhingBuilder;
 
 
-Scope::instance()->skeleton(IPhingBuilder::class, PhingBuilder::class);
+Scope::skeleton(IPhingBuilder::class, PhingBuilder::class);

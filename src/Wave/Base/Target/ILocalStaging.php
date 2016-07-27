@@ -3,6 +3,7 @@ namespace Wave\Base\Target;
 
 
 use Wave\Objects\Package;
+use Wave\Objects\StagingState;
 
 
 /**
@@ -20,4 +21,9 @@ interface ILocalStaging
 	 * @param Package $package
 	 */
 	public function savePackage(Package $package);
+	
+	/**
+	 * @return StagingState
+	 */
+	public function getLocalState();
 }

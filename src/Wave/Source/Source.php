@@ -63,7 +63,7 @@ class Source implements ISource
 	public function connector()
 	{
 		/** @var ISourceConnectorFactory $factory */
-		$factory = Scope::instance()->skeleton(ISourceConnectorFactory::class);
+		$factory = Scope::skeleton(ISourceConnectorFactory::class);
 		return $factory->getConnector($this->getType());
 	}
 	
