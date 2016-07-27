@@ -1,5 +1,5 @@
 <?php
-namespace Wave\Base\Module\Build;
+namespace Wave\Base\Module;
 
 
 use Wave\Objects\Package;

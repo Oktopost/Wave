@@ -1,13 +1,15 @@
 <?php
-namespace Wave\Base\Module\Build;
+namespace Wave\Module;
 
 
 use Wave\Scope;
+use Wave\Base\Module\IBuild;
 use Wave\Base\FileSystem\ITempDirectory;
+use Wave\Objects\Package;
+
 use Wave\Module\Build\BuildMediator;
 use Wave\Module\Build\FinalizeMediator;
 use Wave\Module\Build\TransferToBuildMediator;
-use Wave\Objects\Package;
 
 
 class BuildModule implements IBuild
@@ -45,8 +47,15 @@ class BuildModule implements IBuild
 		$build		= new BuildMediator();
 		$finalize	= new FinalizeMediator();
 		
-		$transfer->transfer($tempDir, $this->package);
-		$build->build($tempDir, $this->package);
-		$finalize->finalize($tempDir, $this->package);
+		try
+		{
+			$transfer->transfer($tempDir, $this->package);
+			$build->build($tempDir, $this->package);
+			$finalize->finalize($tempDir, $this->package);
+		}
+		finally
+		{
+			$tempDir->remove();
+		}
 	}
 }

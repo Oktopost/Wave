@@ -22,7 +22,7 @@ class BuildMediator
 	 */
 	private function getLogFile(Package $package)
 	{
-		$logDir = Scope::instance()->config('phing.log-dir', 'Log/phing');
+		$logDir = Scope::instance()->config('phing.log-dir', 'log/phing');
 		$logDirFullPath = realpath($logDir);
 		
 		if (!$logDirFullPath || !is_dir($logDirFullPath))
@@ -62,9 +62,12 @@ class BuildMediator
 	 */
 	private function runDepMap(ITempDirectory $tempDir, $targetDir)
 	{
+		mkdir($targetDir);
+		$sourceDir = Scope::instance()->config('phing.source-dir', 'source');
+		
 		$depMap = new Deployment();
 		
-		$depMap->setRootDirectory($tempDir->get());
+		$depMap->setRootDirectory($tempDir->get() . "/$sourceDir");
 		$depMap->setTargetDirectory($targetDir);
 		$depMap->deploy();
 	}

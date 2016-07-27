@@ -31,6 +31,8 @@ class TransferToBuildMediator
 		
 		if (!mkdir($sourceDir, 0750, true))
 			throw new FileException($sourceDir, 'Failed to create directory for source');
+		
+		return $sourceDir;
 	}
 	
 	/**
