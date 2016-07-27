@@ -37,15 +37,6 @@ class PhingBuilderTest extends \PHPUnit_Framework_TestCase
 	 * @param string $fileName
 	 * @return string
 	 */
-	private function getBuildFilePath($fileName = 'test_build.xml')
-	{
-		return realpath(__DIR__ . '/_PhingBuilderTest') . "/$fileName";
-	}
-	
-	/**
-	 * @param string $fileName
-	 * @return string
-	 */
 	private function getPathToCreatedFileByPhingBuild($fileName = 'a.file')
 	{
 		return realpath(__DIR__ . '/_PhingBuilderTest') . "/$fileName";

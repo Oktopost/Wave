@@ -2,20 +2,26 @@
 namespace Wave\Source\Git;
 
 
-use Wave\Base\Source\ISourceVersion;
+use Wave\Scope;
 use Wave\Base\Source\ISourceConnector;
+use Wave\Exceptions\FileException;
+
+use Cz\Git\GitRepository;
 
 
-/**
- * @magic
- */
 class GitSource implements ISourceConnector
 {
-	/**
-	 * @var \Wave\Base\Git\IGitAPI
-	 * @magic
-	 */
-	private $gitAPI;
+	private $sourceDir;
+	
+	/** @var GitRepository */
+	private $git;
+	
+	
+	public function __construct()
+	{
+		$this->sourceDir = Scope::instance()->config('source.dir', 'source');
+		$this->git = new GitRepository($this->sourceDir);
+	}
 	
 	
 	/**
@@ -23,7 +29,7 @@ class GitSource implements ISourceConnector
 	 */
 	public function switchToVersion($version)
 	{
-		
+		$this->git->checkout($version);
 	}
 	
 	/**
@@ -31,17 +37,20 @@ class GitSource implements ISourceConnector
 	 */
 	public function copyContentIntoDir($directory)
 	{
-		
-	}
-	
-	
-	/**
-	 * @param string $id
-	 * @return ISourceVersion|null
-	 */
-	public function getVersion($id)
-	{
-		// TODO: Implement getVersion() method.
+		foreach (scandir($this->sourceDir . '/') as $item)
+		{
+			if (in_array($item, ['..', '.', '.git'])) continue;
+			
+			exec("cp -r $this->sourceDir/$item $directory", $output, $code);
+			
+			if ($code != 0)
+			{
+				throw new FileException(
+					$item,
+					'Failed to copy directroy/file. Output: ' . implode(' \\ ', $output)
+				);
+			}
+		}
 	}
 	
 	/**
@@ -49,24 +58,16 @@ class GitSource implements ISourceConnector
 	 */
 	public function getBranches()
 	{
-		// TODO: Implement getBranches() method.
-	}
-	
-	/**
-	 * @param string $id
-	 * @return bool
-	 */
-	public function hasVersion($id)
-	{
-		// TODO: Implement hasVersion() method.
-	}
-	
-	/**
-	 * @param string $branchName
-	 * @return ISourceVersion|null
-	 */
-	public function getLastVersionForBranch($branchName)
-	{
-		// TODO: Implement getLastVersionForBranch() method.
+		$result = [];
+		
+		foreach ($this->git->getBranches() as $branch)
+		{
+			if (strpos($branch, 'remotes') === 0)
+			{
+				$result[] = substr($branch, strrpos($branch, '/') + 1);
+			}
+		}
+		
+		return $result;
 	}
 }
