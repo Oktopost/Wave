@@ -4,7 +4,6 @@ namespace Wave\Objects;
 
 use Objection\LiteSetup;
 use Objection\LiteObject;
-use Objection\Enum\AccessRestriction;
 
 
 /**

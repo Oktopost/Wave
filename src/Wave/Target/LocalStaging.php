@@ -3,8 +3,8 @@ namespace Wave\Target;
 
 
 use Wave\Scope;
-use Wave\Base\FileSystem\IJsonFile;
 use Wave\Base\Target\ILocalStaging;
+use Wave\Base\FileSystem\IJsonFile;
 use Wave\Objects\Package;
 use Wave\Objects\StagingState;
 
@@ -60,6 +60,7 @@ class LocalStaging implements ILocalStaging
 	 */
 	public function getLocalState()
 	{
-		// $remoteState = new RemoteState();
+		// TODO:
+		return new StagingState();
 	}
 }

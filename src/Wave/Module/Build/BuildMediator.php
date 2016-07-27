@@ -2,14 +2,14 @@
 namespace Wave\Module\Build;
 
 
-use Wave\Exceptions\WaveConfigException;
 use Wave\Scope;
-use Wave\Base\Build\Phing\IPhingBuilder;
 use Wave\Base\Build\Phing\PhingConfig;
+use Wave\Base\Build\Phing\IPhingBuilder;
 use Wave\Base\Target\ILocalStaging;
 use Wave\Base\FileSystem\ITempDirectory;
 use Wave\Objects\Package;
 use Wave\Exceptions\FileException;
+use Wave\Exceptions\WaveConfigException;
 
 use DepMap\Deployment;
 

@@ -35,6 +35,7 @@ class TransferToBuildMediator
 	
 	/**
 	 * @param ITempDirectory $temp
+	 * @param string $version
 	 */
 	private function transferCode(ITempDirectory $temp, $version)
 	{

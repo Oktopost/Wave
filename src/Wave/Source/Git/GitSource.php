@@ -4,7 +4,6 @@ namespace Wave\Source\Git;
 
 use Wave\Base\Source\ISourceVersion;
 use Wave\Base\Source\ISourceConnector;
-use Wave\Exceptions\InvalidSourceDirectoryException;
 
 
 /**
