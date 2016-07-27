@@ -47,32 +47,6 @@ class Scope
 	
 	
 	/**
-	 * @param string|bool $interface
-	 * @param string|null $implementer
-	 * @return object|UnitTestSkeleton
-	 */
-	public function testSkeleton($interface = false, $implementer = null)
-	{
-		if (!$this->testSkeleton)
-		{
-			$this->testSkeleton = new UnitTestSkeleton($this->skeleton);
-		}
-		
-		if (!$interface)
-		{
-			return $this->testSkeleton;
-		}
-		else if ($implementer)
-		{
-			return $this->testSkeleton->override($interface, $implementer);
-		}
-		else
-		{
-			return $this->testSkeleton->get($interface);
-		}
-	}
-	
-	/**
 	 * @return ILog
 	 */
 	public function log()
@@ -115,6 +89,32 @@ class Scope
 	public static function rootDir()
 	{
 		return getcwd();
+	}
+	
+	/**
+	 * @param string|bool $interface
+	 * @param string|null $implementer
+	 * @return object|UnitTestSkeleton
+	 */
+	public static function testSkeleton($interface = false, $implementer = null)
+	{
+		if (!self::instance()->testSkeleton)
+		{
+			self::instance()->testSkeleton = new UnitTestSkeleton(self::instance()->skeleton);
+		}
+		
+		if (!$interface)
+		{
+			return self::instance()->testSkeleton;
+		}
+		else if ($implementer)
+		{
+			return self::instance()->testSkeleton->override($interface, $implementer);
+		}
+		else
+		{
+			return self::instance()->testSkeleton->get($interface);
+		}
 	}
 	
 	/**

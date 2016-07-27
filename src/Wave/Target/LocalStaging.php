@@ -2,13 +2,11 @@
 namespace Wave\Target;
 
 
+use Wave\Scope;
 use Wave\Base\FileSystem\IJsonFile;
 use Wave\Base\Target\ILocalStaging;
-
 use Wave\Objects\Package;
-use Wave\Objects\RemoteState;
 use Wave\Objects\StagingState;
-use Wave\Scope;
 
 
 class LocalStaging implements ILocalStaging

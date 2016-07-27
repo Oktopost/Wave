@@ -32,7 +32,7 @@ class CommandSelectValidatorTest extends \PHPUnit_Framework_TestCase
 	private function mockFactory()
 	{
 		$factory = $this->getMock(ICommandTypeSelectValidatorFactory::class);
-		Scope::instance()->testSkeleton(ICommandTypeSelectValidatorFactory::class, $factory);
+		Scope::testSkeleton(ICommandTypeSelectValidatorFactory::class, $factory);
 		
 		$factory
 			->method('get')
@@ -80,7 +80,7 @@ class CommandSelectValidatorTest extends \PHPUnit_Framework_TestCase
 	
 	public function test_skeleton()
 	{
-		Scope::instance()->testSkeleton()->clear();
+		Scope::testSkeleton()->clear();
 		
 		$this->mockFactory();
 		$this->mockQueue();
