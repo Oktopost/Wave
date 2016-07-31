@@ -4,6 +4,7 @@ namespace Wave\Source\Git;
 
 use Wave\Scope;
 use Wave\Base\Source\ISourceConnector;
+use Wave\Exceptions\WaveException;
 use Wave\Exceptions\FileException;
 
 use Coyl\Git\Git;
@@ -18,10 +19,29 @@ class GitSource implements ISourceConnector
 	private $git;
 	
 	
+	/**
+	 * @param \Exception $e
+	 * @param $message
+	 * @throws WaveException
+	 */
+	private function handleError(\Exception $e, $message)
+	{
+		throw new WaveException($message, 0, $e);
+	}
+	
+	
 	public function __construct()
 	{
 		$this->sourceDir = Scope::instance()->config('source.dir', 'source');
-		$this->git = Git::open($this->sourceDir);
+		
+		try
+		{
+			$this->git = Git::open($this->sourceDir);
+		}
+		catch (\Exception $e)
+		{
+			$this->handleError($e, "Error loading repository from '$this->sourceDir'");
+		}
 	}
 	
 	
@@ -30,7 +50,31 @@ class GitSource implements ISourceConnector
 	 */
 	public function switchToVersion($version)
 	{
-		$this->git->checkout($version);
+		try
+		{
+			$this->git->checkout($version);
+		}
+		catch (\Exception $e)
+		{
+			$this->handleError($e, "Failed to checkout version $version");
+		}
+	}
+	
+	/**
+	 * @param string $branch
+	 */
+	public function switchToBranch($branch)
+	{
+		try
+		{
+			$this->git->checkout($branch);
+			$this->git->fetch();
+			$this->git->run('merge', ['--ff-only']);
+		}
+		catch (\Exception $e)
+		{
+			$this->handleError($e, "Error chcking out branch $branch");
+		}
 	}
 	
 	/**

@@ -10,6 +10,11 @@ interface ISourceConnector
 	public function switchToVersion($version);
 	
 	/**
+	 * @param string $branch
+	 */
+	public function switchToBranch($branch);
+	
+	/**
 	 * @param string $directory
 	 */
 	public function copyContentIntoDir($directory);
