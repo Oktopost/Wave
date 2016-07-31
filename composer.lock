@@ -4,50 +4,51 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "2d3c8959ebe6f19ad5da2cfd6130d1cd",
-    "content-hash": "573aaf06d81f2508f37d47f5ff7719ea",
+    "hash": "37a49096397560aaa5a75c20a559c9e9",
+    "content-hash": "c6cb4f043e9b356cae514aa3a13d86a0",
     "packages": [
         {
-            "name": "czproject/git-php",
-            "version": "v3.5.0",
+            "name": "coyl/git",
+            "version": "0.1.6",
             "source": {
                 "type": "git",
-                "url": "https://github.com/czproject/git-php.git",
-                "reference": "0cc612e67e0ca97bae5c984d8477ca1327a23084"
+                "url": "https://github.com/coyl/git.git",
+                "reference": "f1b579c9226a7761328b89e83212519b18d1759d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/czproject/git-php/zipball/0cc612e67e0ca97bae5c984d8477ca1327a23084",
-                "reference": "0cc612e67e0ca97bae5c984d8477ca1327a23084",
+                "url": "https://api.github.com/repos/coyl/git/zipball/f1b579c9226a7761328b89e83212519b18d1759d",
+                "reference": "f1b579c9226a7761328b89e83212519b18d1759d",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.4.0"
+                "php": ">=5.4"
             },
             "require-dev": {
-                "nette/tester": "~1.1.0"
+                "phpunit/phpunit": "~3.7.0"
             },
             "type": "library",
             "autoload": {
-                "classmap": [
-                    "src/"
-                ]
+                "psr-4": {
+                    "": "src/"
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
             "authors": [
                 {
-                    "name": "Jan Pecha",
-                    "email": "janpecha@email.cz"
+                    "name": "Vasil coylOne Kulakov",
+                    "email": "iam@vasiliy.pro",
+                    "homepage": "http://github.com/coyl"
                 }
             ],
-            "description": "Library for work with Git repository in PHP.",
+            "description": "PHP library for manipulations on git repository. Based on kbjr/Git.php and it's forks",
+            "homepage": "https://github.com/coyl/Git.php",
             "keywords": [
-                "git"
+                "git",
+                "git-client",
+                "php-git"
             ],
-            "time": "2016-04-20 07:05:19"
+            "time": "2016-06-08 12:24:48"
         },
         {
             "name": "oktopost/dep-map",

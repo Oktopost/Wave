@@ -6,21 +6,22 @@ use Wave\Scope;
 use Wave\Base\Source\ISourceConnector;
 use Wave\Exceptions\FileException;
 
-use Cz\Git\GitRepository;
+use Coyl\Git\Git;
+use Coyl\Git\GitRepo;
 
 
 class GitSource implements ISourceConnector
 {
 	private $sourceDir;
 	
-	/** @var GitRepository */
+	/** @var GitRepo */
 	private $git;
 	
 	
 	public function __construct()
 	{
 		$this->sourceDir = Scope::instance()->config('source.dir', 'source');
-		$this->git = new GitRepository($this->sourceDir);
+		$this->git = Git::open($this->sourceDir);
 	}
 	
 	
@@ -60,12 +61,9 @@ class GitSource implements ISourceConnector
 	{
 		$result = [];
 		
-		foreach ($this->git->getBranches() as $branch)
+		foreach ($this->git->branches(GitRepo::BRANCH_LIST_MODE_REMOTE) as $branch)
 		{
-			if (strpos($branch, 'remotes') === 0)
-			{
-				$result[] = substr($branch, strrpos($branch, '/') + 1);
-			}
+			$result[] = substr($branch, strrpos($branch, '/') + 1);
 		}
 		
 		return $result;

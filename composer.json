@@ -15,7 +15,7 @@
 		"oktopost/dep-map": "^1.0.0",
 		"oktopost/skeleton": "^1.0",
 		"phing/phing": "^2.14.0",
-		"czproject/git-php": "^3.5"
+        "coyl/git": "^0.1.6"
 	},
 	
     "minimum-stability": "stable",
