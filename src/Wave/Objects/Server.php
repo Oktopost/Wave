@@ -11,7 +11,7 @@ use Objection\LiteObject;
 
 /**
  * @property string $Name
- * @property string $IP
+ * @property string|null $IP
  * @property string $Auto
  * @property string $Type
  * @property string $StagingDir

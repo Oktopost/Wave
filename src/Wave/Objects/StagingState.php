@@ -8,35 +8,16 @@ use Objection\LiteObject;
 
 /**
  * @property Package[] $Staged
- * @property string[] $Garbage
  */
 class StagingState extends LiteObject
 {
-	/**
-	 * @param bool $isForFolders
-	 * @return string[]
-	 */
-	private function getGarbage($isForFolders)
-	{
-		return array_values(array_filter(
-			$this->Garbage,
-			function($item)
-				use ($isForFolders)
-			{
-				return (substr($item, -1) == '/') == $isForFolders;
-			}
-		));
-	}
-	
-	
 	/**
 	 * @return array
 	 */
 	protected function _setup()
 	{
 		return [
-			'Staged'		=> LiteSetup::createArray([]),
-			'Garbage'		=> LiteSetup::createArray([])
+			'Staged'		=> LiteSetup::createArray([])
 		];
 	}
 	
@@ -63,29 +44,5 @@ class StagingState extends LiteObject
 		}
 		
 		return null;
-	}
-	
-	/**
-	 * @return bool
-	 */
-	public function hasGarbage()
-	{
-		return (bool)$this->Garbage;
-	}
-	
-	/**
-	 * @return string[]
-	 */
-	public function getGarbageFiles()
-	{
-		return $this->getGarbage(false);
-	}
-	
-	/**
-	 * @return string[]
-	 */
-	public function getGarbageFolders()
-	{
-		return $this->getGarbage(true);
 	}
 }

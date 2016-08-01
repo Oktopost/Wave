@@ -7,9 +7,7 @@ use Objection\Enum\AccessRestriction;
 
 
 /**
- * @property Package[] $Staged
  * @property Package $Deployed
- * @property string[] $Garbage
  */
 class RemoteState extends StagingState
 {
