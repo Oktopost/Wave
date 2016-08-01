@@ -2,6 +2,7 @@
 namespace Wave\Source;
 
 
+use Wave\Scope;
 use Wave\Base\ILock;
 use Wave\Base\ILockEntity;
 use Wave\Base\Source\ISource;
@@ -9,8 +10,6 @@ use Wave\Base\Source\ISourceConnector;
 use Wave\Base\Source\ISourceConnectorFactory;
 use Wave\Enum\SourceType;
 use Wave\Exceptions\WaveConfigException;
-use Wave\Lock;
-use Wave\Scope;
 
 
 /**

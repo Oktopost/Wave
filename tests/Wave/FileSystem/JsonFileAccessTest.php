@@ -3,6 +3,8 @@ namespace Wave\FileSystem;
 
 
 use Wave\Base\FileSystem\IFileAccess;
+use Wave\Base\FileSystem\IJsonFileAccess;
+use Wave\Scope;
 
 
 class JsonFileAccessTest extends \PHPUnit_Framework_TestCase
@@ -13,6 +15,13 @@ class JsonFileAccessTest extends \PHPUnit_Framework_TestCase
 	private function mockFileAccess()
 	{
 		return $this->getMock(IFileAccess::class);
+	}
+	
+	
+	public function test_skeleton_Defined()
+	{
+		Scope::testSkeleton()->clear();
+		self::assertInstanceOf(JsonFileAccess::class, Scope::skeleton(IJsonFileAccess::class));
 	}
 	
 	
