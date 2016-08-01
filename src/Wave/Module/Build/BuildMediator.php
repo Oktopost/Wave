@@ -80,6 +80,7 @@ class BuildMediator
 	 */
 	public function build(ITempDirectory $temp, Package $package)
 	{
+		/** @var ILocalStaging $localStaging */
 		$localStaging	= Scope::skeleton(ILocalStaging::class);
 		$phingBuilder	= $this->getPhingBuildObject($temp->get(), $package);
 		$packageDir		= $localStaging->getDirectoryForPackage($package);

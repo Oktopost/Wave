@@ -15,15 +15,6 @@ class LocalStaging implements ILocalStaging
 	
 	
 	/**
-	 * @param string $target
-	 * @return string
-	 */
-	private function getStagingPathTo($target)
-	{
-		return Scope::instance()->rootDir() . "/{$this->getStagingDir()}/$target";
-	}
-	
-	/**
 	 * @return string
 	 */
 	private function getStagingDir()
@@ -42,25 +33,5 @@ class LocalStaging implements ILocalStaging
 	public function getDirectoryForPackage(Package $package)
 	{
 		return "{$this->getStagingDir()}/{$package->Name}";
-	}
-	
-	/**
-	 * @param Package $package
-	 */
-	public function savePackage(Package $package)
-	{
-		/** @var IJsonFile $jsonFile */
-		$jsonFile = Scope::skeleton(IJsonFile::class);
-		$jsonFile->setTarget($this->getStagingPathTo("{$package->Name}.json"));
-		$jsonFile->save($package);
-	}
-	
-	/**
-	 * @return StagingState
-	 */
-	public function getLocalState()
-	{
-		// TODO:
-		return new StagingState();
 	}
 }

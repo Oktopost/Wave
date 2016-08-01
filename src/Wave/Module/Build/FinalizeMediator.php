@@ -2,6 +2,7 @@
 namespace Wave\Module\Build;
 
 
+use Wave\Base\FileSystem\IData;
 use Wave\Scope;
 use Wave\Base\Target\ILocalStaging;
 use Wave\Base\FileSystem\ITempDirectory;
@@ -18,10 +19,16 @@ class FinalizeMediator
 	 */
 	public function finalize(ITempDirectory $temp, Package $package)
 	{
-		$localStaging = Scope::skeleton(ILocalStaging::class);
+		/** @var IData $data */
+		$data = Scope::skeleton(IData::class);
+		$localPackagesData = $data->localPackages();
 		
 		$package->touch();
-		$localStaging->savePackage($package);
+		
+		$localState = $localPackagesData->load();
+		$localState->Staged[] = $package;
+		$localPackagesData->save($localState);
+		
 		$temp->remove();
 	}
 }
