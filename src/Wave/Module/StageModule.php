@@ -18,7 +18,7 @@ use Wave\Exceptions\WaveUnexpectedException;
 
 
 /**
- * @autoload
+ * @magic
  */
 class StageModule implements IStage
 {

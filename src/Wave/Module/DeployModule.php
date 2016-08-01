@@ -5,10 +5,8 @@ namespace Wave\Module;
 use Wave\Base\ILock;
 use Wave\Base\ILockEntity;
 use Wave\Base\Module\IDeployment;
-use Wave\Base\Target\ILocalStaging;
 use Wave\Base\Target\IServerConnector;
 use Wave\Base\Target\IRemoteScriptRunner;
-use Wave\Base\FileSystem\IData;
 
 use Wave\Scope;
 use Wave\Objects\Server;
@@ -16,9 +14,6 @@ use Wave\Objects\Package;
 use Wave\Exceptions\WaveUnexpectedException;
 
 
-/**
- * @autoload
- */
 class DeployModule implements IDeployment
 {
 	/** @var Server */
@@ -55,15 +50,6 @@ class DeployModule implements IDeployment
 		$remotePackagesConfig->save($remoteState);
 		
 		$scriptRunner->runPostDeploy($this->connector, $this->package);
-	}
-	
-
-	/**.
-	 * @param IData $data
-	 */
-	public function __construct(IData $data)
-	{
-		
 	}
 	
 	
