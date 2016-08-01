@@ -17,7 +17,7 @@ class StagingState extends LiteObject
 	protected function _setup()
 	{
 		return [
-			'Staged'		=> LiteSetup::createArray([])
+			'Staged' => LiteSetup::createArray([])
 		];
 	}
 	

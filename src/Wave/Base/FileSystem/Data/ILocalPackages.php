@@ -3,23 +3,18 @@ namespace Wave\Base\FileSystem\Data;
 
 
 use Wave\Base\FileSystem\IDataFile;
-use Wave\Objects\Package;
+use Wave\Objects\StagingState;
 
 
 interface ILocalPackages extends IDataFile
 {
 	/**
-	 * @return Package[]
+	 * @return StagingState
 	 */
-	public function getState();
+	public function load();
 
 	/**
-	 * @param Package $p
+	 * @param StagingState $state
 	 */
-	public function add(Package $p);
-
-	/**
-	 * @param Package $p
-	 */
-	public function delete(Package $p);
+	public function save(StagingState $state);
 }
