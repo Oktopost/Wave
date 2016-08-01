@@ -22,9 +22,8 @@ interface IServerConnector
 
 	/**
 	 * @param Package $p
-	 * @param string $localFullPath
 	 */
-	public function transferPackage(Package $p, $localFullPath);
+	public function transferPackage(Package $p);
 
 	/**
 	 * @param Package $p
