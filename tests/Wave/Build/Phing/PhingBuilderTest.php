@@ -4,6 +4,7 @@ namespace Wave\Build\Phing;
 
 use Wave\Base\Build\Phing\IPhingBuilder;
 use Wave\Base\Build\Phing\PhingConfig;
+use Wave\Config;
 use Wave\Scope;
 
 
@@ -45,8 +46,14 @@ class PhingBuilderTest extends \PHPUnit_Framework_TestCase
 	
 	protected function setUp()
 	{
+		/** @var Config $config */
+		$config = $this->getMockBuilder(Config::class)->disableOriginalConstructor()->getMock();
+		Scope::instance()->setConfig($config);
+		
 		if (file_exists($this->getLogFilePath()))
 			unlink($this->getLogFilePath());
+		
+		touch($this->getLogFilePath());
 	}
 	
 	

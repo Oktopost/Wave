@@ -43,7 +43,7 @@ class Package extends LiteObject
 	{
 		$package = new Package();
 		
-		$package->Name			= "$version-$buildTarget";
+		$package->Name			= "$buildTarget-$version";
 		$package->Version		= $version;
 		$package->BuildTarget	= $buildTarget;
 		$package->Timestamp		= time();

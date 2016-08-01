@@ -20,7 +20,14 @@ class PhingBuilder implements IPhingBuilder
 	 */	
 	private function createPhingCommand()
 	{
-		$logFile = Scope::rootDir() . '/'. $this->config->LogFile;
+		if ($this->config->LogFile[0] != '/')
+		{
+			$logFile = Scope::rootDir() . '/'. $this->config->LogFile;
+		}
+		else
+		{
+			$logFile = $this->config->LogFile;
+		}
 		
 		$arguments = [
 			$this->config->PathToPhing,

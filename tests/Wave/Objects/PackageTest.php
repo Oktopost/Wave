@@ -37,6 +37,6 @@ class PackageTest extends \PHPUnit_Framework_TestCase
 	
 	public function test_create_NameSet()
 	{
-		$this->assertEquals('a-b', Package::create('a', 'b')->Name);
+		$this->assertEquals('b-a', Package::create('a', 'b')->Name);
 	}
 }
