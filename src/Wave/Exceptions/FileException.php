@@ -6,7 +6,7 @@ class FileException extends WaveException
 {
 	/**
 	 * @param string $filePath
-	 * @param int $message
+	 * @param string $message
 	 */
 	public function __construct($filePath, $message)
 	{

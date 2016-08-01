@@ -6,6 +6,7 @@ interface IFileAccess
 {
 	/**
 	 * @param bool $ignoreMissingFile
+	 * @return string
 	 */
 	public function readAll($ignoreMissingFile = false);
 
