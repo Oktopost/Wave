@@ -8,13 +8,14 @@ use Wave\Base\FileSystem\IData;
 use Wave\Base\FileSystem\ILocalFileAccess;
 use Wave\Base\FileSystem\Data\IServerState;
 
-use Wave\Exceptions\DirectoryException;
-use Wave\Exceptions\FileException;
 use Wave\Scope;
 use Wave\Objects\Server;
 use Wave\Objects\Package;
 use Wave\FileSystem\Data\ServerState;
 use Wave\FileSystem\Data\SyncedServerState;
+
+use Wave\Exceptions\FileException;
+use Wave\Exceptions\DirectoryException;
 
 
 class Local implements IServerConnector

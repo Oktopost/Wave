@@ -7,6 +7,7 @@ use Wave\Base\ILockEntity;
 use Wave\Base\Module\IDeployment;
 use Wave\Base\Target\IServerConnector;
 use Wave\Base\Target\IRemoteScriptRunner;
+use Wave\Base\Target\IServerConnectorFactory;
 
 use Wave\Scope;
 use Wave\Objects\Server;
@@ -65,8 +66,9 @@ class DeployModule implements IDeployment
 		$lock = Scope::skeleton(ILock::class);
 		$this->serverLock = $lock->server($server->Name);
 		
-		$this->connector = Scope::skeleton(IServerConnector::class);
-		$this->connector->setup($server);
+		/** @var IServerConnectorFactory $factory */
+		$factory = Scope::skeleton(IServerConnectorFactory::class);
+		$this->connector = $factory->get($server);
 			
 		return $this;
 	}

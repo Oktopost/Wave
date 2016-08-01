@@ -8,6 +8,7 @@ use Wave\Base\Module\IStage;
 use Wave\Base\Target\ILocalStaging;
 use Wave\Base\Target\IServerConnector;
 use Wave\Base\Target\IRemoteScriptRunner;
+use Wave\Base\Target\IServerConnectorFactory;
 use Wave\Base\FileSystem\IData;
 use Wave\Base\FileSystem\Data\ILocalPackages;
 
@@ -105,8 +106,9 @@ class StageModule implements IStage
 		$lock = Scope::skeleton(ILock::class);
 		$this->serverLock = $lock->server($server->Name);
 		
-		$this->connector = Scope::skeleton(IServerConnector::class);
-		$this->connector->setup($server);
+		/** @var IServerConnectorFactory $factory */
+		$factory = Scope::skeleton(IServerConnectorFactory::class);
+		$this->connector = $factory->get($server);
 			
 		return $this;
 	}
