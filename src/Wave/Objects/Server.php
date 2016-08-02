@@ -30,7 +30,7 @@ class Server extends LiteObject
 			'Auto'				=> LiteSetup::createEnum(AutoBehavior::class, AutoBehavior::NONE),
 			'Type'				=> LiteSetup::createEnum(ServerType::class, ServerType::LOCAL),
 			'StagingDir'		=> LiteSetup::createString(),
-			'DeploymentLinkDir'	=> LiteSetup::createString(),
+			'DeploymentLinkDir'	=> LiteSetup::createString()
 		];
 	}
 }

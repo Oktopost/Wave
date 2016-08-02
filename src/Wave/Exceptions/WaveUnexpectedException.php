@@ -2,7 +2,7 @@
 namespace Wave\Exceptions;
 
 
-class WaveUnexpectedException extends \Exception
+class WaveUnexpectedException extends WaveException
 {
 	/**
 	 * @param string $message
