@@ -2,16 +2,13 @@
 namespace Wave\Commands;
 
 
-use Wave\Commands\Types\DeployCommand;
-use Wave\Commands\Types\StageCommand;
 use Wave\Enum\CommandType;
 use Wave\Enum\CommandState;
 use Wave\Base\Commands\IQueue;
 use Wave\Base\Commands\Command;
 use Wave\Base\Commands\ICommandCreator;
 
-use Wave\Commands\Types\CleanCommand;
-use Wave\Commands\Types\BuildCommand;
+use Wave\Commands\Types;
 
 
 class CommandCreator implements ICommandCreator
@@ -43,7 +40,7 @@ class CommandCreator implements ICommandCreator
 			}
 		}
 		
-		return $this->queue->add(new CleanCommand());
+		return $this->queue->add(new Types\CleanCommand());
 	}
 	
 	/**
@@ -53,7 +50,7 @@ class CommandCreator implements ICommandCreator
 	 */
 	public function build($version, $targetBuild)
 	{
-		$command = new BuildCommand();
+		$command = new Types\BuildCommand();
 		
 		$command->Version = $version;
 		$command->BuildTarget = $targetBuild;
@@ -69,7 +66,7 @@ class CommandCreator implements ICommandCreator
 	 */
 	public function stage($version, $targetBuild, array $servers)
 	{
-		$command = new StageCommand();
+		$command = new Types\StageCommand();
 		
 		$command->Version = $version;
 		$command->BuildTarget = $targetBuild;
@@ -86,7 +83,7 @@ class CommandCreator implements ICommandCreator
 	 */
 	public function deploy($version, $targetBuild, array $servers)
 	{
-		$command = new DeployCommand();
+		$command = new Types\DeployCommand();
 		
 		$command->Version = $version;
 		$command->BuildTarget = $targetBuild;

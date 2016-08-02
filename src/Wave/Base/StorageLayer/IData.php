@@ -22,4 +22,9 @@ interface IData
 	 * @return IServers
 	 */
 	public function servers();
+	
+	/**
+	 * @return IQueueFile
+	 */
+	public function commandsQueue();
 }

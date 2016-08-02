@@ -8,5 +8,6 @@ class CommandState
 	
 	
 	const IDLE		= 'idle';
+	const PAUSED	= 'paused';
 	const RUNNING	= 'running';
 }

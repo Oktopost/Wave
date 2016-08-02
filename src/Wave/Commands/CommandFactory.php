@@ -9,8 +9,10 @@ use Wave\Exceptions\WaveUnexpectedException;
 
 use Wave\Commands\Types;
 
+use Skeleton\ISingleton;
 
-class CommandFactory implements ICommandFactory
+
+class CommandFactory implements ICommandFactory, ISingleton
 {
 	/**
 	 * @param string $type

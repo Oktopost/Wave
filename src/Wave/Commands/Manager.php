@@ -30,7 +30,7 @@ class Manager implements IManager
 	
 	/**
 	 * @magic
-	 * @var \Wave\Base\Commands\IQueueFile
+	 * @var \Wave\Base\StorageLayer\IQueueFile
 	 */
 	private $queueFile;
 	

@@ -4,17 +4,14 @@ namespace Wave\StorageLayer;
 
 use Wave\Scope;
 
+use Wave\Base\StorageLayer;
 use Wave\Base\FileSystem\IDataFile;
 use Wave\Base\FileSystem\ILocalFileAccess;
-use Wave\Base\StorageLayer\IData;
-use Wave\Base\StorageLayer\IServers;
-use Wave\Base\StorageLayer\IServerState;
-use Wave\Base\StorageLayer\ILocalPackages;
 
 use Skeleton\ISingleton;
 
 
-class Data implements IData, ISingleton
+class Data implements StorageLayer\IData, ISingleton
 {
 	/**
 	 * @param IDataFile $dataLoader
@@ -32,7 +29,7 @@ class Data implements IData, ISingleton
 	
 	
 	/**
-	 * @return ILocalPackages
+	 * @return StorageLayer\ILocalPackages
 	 */
 	public function localPackages()
 	{
@@ -42,7 +39,7 @@ class Data implements IData, ISingleton
 
 	/**
 	 * @param string $serverName
-	 * @return IServerState
+	 * @return StorageLayer\IServerState
 	 */
 	public function localServerState($serverName)
 	{
@@ -51,11 +48,20 @@ class Data implements IData, ISingleton
 	}
 	
 	/**
-	 * @return IServers
+	 * @return StorageLayer\IServers
 	 */
 	public function servers()
 	{
 		$path = Scope::rootDir() . "/servers.json";
 		return $this->setupFileAccessFor(new Servers(), $path);
+	}
+	
+	/**
+	 * @return StorageLayer\IQueueFile
+	 */
+	public function commandsQueue()
+	{
+		$path = Scope::rootDir() . "/state/commands.json";
+		return $this->setupFileAccessFor(new QueueFile(), $path);
 	}
 }

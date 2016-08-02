@@ -49,10 +49,11 @@ class LocalPackagesTest extends \PHPUnit_Framework_TestCase
 		$fileAccess->method('readAll')->willReturn('{"packages":[{"Name":"a"}, {"Name":"b"}]}');
 		
 		$local = (new LocalPackages())->setFileAccess($fileAccess);
+		$result = $local->load();
 		
-		self::assertCount(2, $local->load()->Staged);
-		self::assertEquals('a', $local->load()->Staged[0]->Name);
-		self::assertEquals('b', $local->load()->Staged[1]->Name);
+		self::assertCount(2, $result->Staged);
+		self::assertEquals('a', $result->Staged[0]->Name);
+		self::assertEquals('b', $result->Staged[1]->Name);
 	}
 	
 	

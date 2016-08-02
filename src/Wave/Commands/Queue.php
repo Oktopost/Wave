@@ -1,8 +1,10 @@
 <?php
-namespace Wave\Base\Commands;
+namespace Wave\Commands;
 
 
 use Wave\Scope;
+use Wave\Base\Commands\IQueue;
+use Wave\Base\Commands\Command;
 
 
 class Queue implements IQueue

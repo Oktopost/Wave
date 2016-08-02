@@ -18,4 +18,9 @@ class DataTest extends \PHPUnit_Framework_TestCase
 	{
 		self::assertInstanceOf(Servers::class, (new Data())->servers());
 	}
+	
+	public function test_commandsQueue()
+	{
+		self::assertInstanceOf(QueueFile::class, (new Data())->commandsQueue());
+	}
 }
