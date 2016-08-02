@@ -2,6 +2,9 @@
 namespace Wave\Base\Commands;
 
 
+use Wave\Scope;
+
+
 class Queue implements IQueue
 {
 	/** @var Command[] */
@@ -45,11 +48,15 @@ class Queue implements IQueue
 	 */
 	public function remove(Command $command)
 	{
-		$index = array_search($command, $this->commands, true);
-		
-		if ($index !== false)
+		foreach ($this->commands as $index => $existing)
 		{
-			unset($this->commands[$index]);
+			if ($existing->ID == $command->ID)
+			{
+				unset($this->commands[$index]);
+				return;
+			}
 		}
+		
+		Scope::instance()->log()->info('Command was not found when trying to remove @0', $command->toArray());
 	}
 }

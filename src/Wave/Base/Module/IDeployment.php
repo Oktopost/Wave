@@ -2,8 +2,9 @@
 namespace Wave\Base\Module;
 
 
-use Wave\Objects\Package;
 use Wave\Objects\Server;
+use Wave\Objects\Package;
+
 
 interface IDeployment
 {

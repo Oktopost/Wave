@@ -2,9 +2,9 @@
 namespace Wave\Module;
 
 
+use Wave\Base\Module\Processor\ICommandProcessor;
 use Wave\Base\Commands\Command;
 use Wave\Base\Commands\IManager;
-use Wave\Base\Module\Processor\ICommandProcessor;
 
 
 /**

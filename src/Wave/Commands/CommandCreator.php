@@ -86,7 +86,6 @@ class CommandCreator implements ICommandCreator
 	 */
 	public function deploy($version, $targetBuild, array $servers)
 	{
-		
 		$command = new DeployCommand();
 		
 		$command->Version = $version;
