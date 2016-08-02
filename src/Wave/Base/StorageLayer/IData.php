@@ -1,10 +1,5 @@
 <?php
-namespace Wave\Base\FileSystem;
-
-
-use Wave\Base\FileSystem\Data\IServers;
-use Wave\Base\FileSystem\Data\IServerState;
-use Wave\Base\FileSystem\Data\ILocalPackages;
+namespace Wave\Base\StorageLayer;
 
 
 /**

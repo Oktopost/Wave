@@ -1,12 +1,12 @@
 <?php
-namespace Wave\FileSystem\Data;
+namespace Wave\StorageLayer;
 
 
 use Wave\Scope;
 
 use Wave\Base\FileSystem\IFileAccess;
 use Wave\Base\FileSystem\IJsonFileAccess;
-use Wave\Base\FileSystem\Data\IServerState;
+use Wave\Base\StorageLayer\IServerState;
 
 use Wave\Objects\Package;
 use Wave\Objects\RemoteState;

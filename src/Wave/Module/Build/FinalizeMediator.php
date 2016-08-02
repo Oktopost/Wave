@@ -2,7 +2,7 @@
 namespace Wave\Module\Build;
 
 
-use Wave\Base\FileSystem\IData;
+use Wave\Base\StorageLayer\IData;
 use Wave\Scope;
 use Wave\Base\Target\ILocalStaging;
 use Wave\Base\FileSystem\ITempDirectory;

@@ -2,8 +2,9 @@
 namespace Wave\Base\FileSystem;
 
 
+use Wave\Base\StorageLayer\IData;
 use Wave\Scope;
-use Wave\FileSystem\Data;
+use Wave\StorageLayer;
 use Wave\FileSystem\JsonFile;
 use Wave\FileSystem\TempDirectory;
 use Wave\FileSystem\JsonFileAccess;

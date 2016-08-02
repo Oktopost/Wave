@@ -2,7 +2,7 @@
 namespace Wave\Base\Target;
 
 
-use Wave\Base\FileSystem\Data\IServerState;
+use Wave\Base\StorageLayer\IServerState;
 use Wave\Objects\Server;
 use Wave\Objects\Package;
 

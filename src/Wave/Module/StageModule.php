@@ -9,8 +9,8 @@ use Wave\Base\Target\ILocalStaging;
 use Wave\Base\Target\IServerConnector;
 use Wave\Base\Target\IRemoteScriptRunner;
 use Wave\Base\Target\IServerConnectorFactory;
-use Wave\Base\FileSystem\IData;
-use Wave\Base\FileSystem\Data\ILocalPackages;
+use Wave\Base\StorageLayer\IData;
+use Wave\Base\StorageLayer\ILocalPackages;
 
 use Wave\Scope;
 use Wave\Objects\Server;

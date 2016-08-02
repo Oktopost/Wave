@@ -1,19 +1,15 @@
 <?php
-namespace Wave\FileSystem;
+namespace Wave\StorageLayer;
 
 
-use Wave\Base\FileSystem\IDataFile;
 use Wave\Scope;
 
-use Wave\Base\FileSystem\IData;
+use Wave\Base\FileSystem\IDataFile;
 use Wave\Base\FileSystem\ILocalFileAccess;
-use Wave\Base\FileSystem\Data\IServers;
-use Wave\Base\FileSystem\Data\IServerState;
-use Wave\Base\FileSystem\Data\ILocalPackages;
-
-use Wave\FileSystem\Data\Servers;
-use Wave\FileSystem\Data\ServerState;
-use Wave\FileSystem\Data\LocalPackages;
+use Wave\Base\StorageLayer\IData;
+use Wave\Base\StorageLayer\IServers;
+use Wave\Base\StorageLayer\IServerState;
+use Wave\Base\StorageLayer\ILocalPackages;
 
 use Skeleton\ISingleton;
 

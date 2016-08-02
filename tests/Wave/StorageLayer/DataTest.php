@@ -1,10 +1,5 @@
 <?php
-namespace Wave\FileSystem;
-
-
-use Wave\FileSystem\Data\Servers;
-use Wave\FileSystem\Data\ServerState;
-use Wave\FileSystem\Data\LocalPackages;
+namespace Wave\StorageLayer;
 
 
 class DataTest extends \PHPUnit_Framework_TestCase

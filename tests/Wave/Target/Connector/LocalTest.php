@@ -2,12 +2,12 @@
 namespace Wave\Target\Connector;
 
 
-use Wave\Base\FileSystem\IData;
+use Wave\Base\StorageLayer\IData;
 use Wave\Base\FileSystem\IFileAccess;
 use Wave\Base\FileSystem\ILocalFileAccess;
 
 use Wave\Base\Target\ILocalStaging;
-use Wave\FileSystem\Data\SyncedServerState;
+use Wave\StorageLayer\SyncedServerState;
 use Wave\Objects\RemoteState;
 use Wave\Scope;
 use Wave\Config;

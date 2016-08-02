@@ -1,5 +1,5 @@
 <?php
-namespace Wave\FileSystem\Data;
+namespace Wave\StorageLayer;
 
 
 use Wave\Base\FileSystem\IFileAccess;

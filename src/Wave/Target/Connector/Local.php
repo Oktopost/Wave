@@ -4,15 +4,15 @@ namespace Wave\Target\Connector;
 
 use Wave\Base\Target\ILocalStaging;
 use Wave\Base\Target\IServerConnector;
-use Wave\Base\FileSystem\IData;
+use Wave\Base\StorageLayer\IData;
 use Wave\Base\FileSystem\ILocalFileAccess;
-use Wave\Base\FileSystem\Data\IServerState;
+use Wave\Base\StorageLayer\IServerState;
 
 use Wave\Scope;
 use Wave\Objects\Server;
 use Wave\Objects\Package;
-use Wave\FileSystem\Data\ServerState;
-use Wave\FileSystem\Data\SyncedServerState;
+use Wave\StorageLayer\ServerState;
+use Wave\StorageLayer\SyncedServerState;
 
 use Wave\Exceptions\FileException;
 use Wave\Exceptions\DirectoryException;

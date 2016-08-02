@@ -23,7 +23,7 @@ abstract class Command extends LiteObject
 	protected function _setup()
 	{
 		return [
-			'ID'		=> uniqid(),
+			'ID'		=> LiteSetup::createString(uniqid()),
 			'Type'		=> LiteSetup::createEnum(CommandType::class),
 			'State'		=> LiteSetup::createEnum(CommandState::class, CommandState::IDLE),
 			'Priority'	=> LiteSetup::createInt()

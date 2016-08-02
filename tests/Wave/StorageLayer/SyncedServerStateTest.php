@@ -1,8 +1,8 @@
 <?php
-namespace Wave\FileSystem\Data;
+namespace Wave\StorageLayer;
 
 
-use Wave\Base\FileSystem\Data\IServerState;
+use Wave\Base\StorageLayer\IServerState;
 use Wave\Objects\RemoteState;
 use Wave\Exceptions\WaveException;
 

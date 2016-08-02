@@ -1,12 +1,12 @@
 <?php
-namespace Wave\FileSystem\Data;
+namespace Wave\StorageLayer;
 
 
 use Wave\Scope;
 
 use Wave\Base\FileSystem\IFileAccess;
 use Wave\Base\FileSystem\IJsonFileAccess;
-use Wave\Base\FileSystem\Data\IServers;
+use Wave\Base\StorageLayer\IServers;
 
 use Wave\Objects\Server;
 

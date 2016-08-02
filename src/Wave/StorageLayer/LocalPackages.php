@@ -1,12 +1,12 @@
 <?php
-namespace Wave\FileSystem\Data;
+namespace Wave\StorageLayer;
 
 
 use Wave\Scope;
 
 use Wave\Base\FileSystem\IFileAccess;
 use Wave\Base\FileSystem\IJsonFileAccess;
-use Wave\Base\FileSystem\Data\ILocalPackages;
+use Wave\Base\StorageLayer\ILocalPackages;
 
 use Wave\Objects\Package;
 use Wave\Objects\StagingState;
