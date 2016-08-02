@@ -4,6 +4,7 @@ namespace Wave\FileSystem;
 
 use Wave\Base\FileSystem\IFileAccess;
 use Wave\Base\FileSystem\IJsonFileAccess;
+use Wave\Exceptions\WaveException;
 
 
 class JsonFileAccess implements IJsonFileAccess
@@ -28,7 +29,17 @@ class JsonFileAccess implements IJsonFileAccess
 	 */
 	public function readAll($ignoreMissingFile = false)
 	{
-		return json_decode($this->fileAccess->readAll($ignoreMissingFile));
+		$data = $this->fileAccess->readAll($ignoreMissingFile);
+		
+		if ($data === '')
+			return new \stdClass();
+		
+		$decoded = json_decode($data);
+		
+		if (is_null($decoded))			
+			throw new WaveException('Failed to decode data from file: ' . json_last_error_msg());
+		
+		return $decoded;
 	}
 	
 	/**

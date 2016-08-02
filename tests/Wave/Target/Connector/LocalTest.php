@@ -179,6 +179,7 @@ class LocalTest extends \PHPUnit_Framework_TestCase
 		$a = new Local();
 		$a->setup($server);
 		
+		$this->fileAccess->method('readAll')->willReturn('');
 		$this->fileAccess->expects(self::once())->method('writeAll');
 		$this->localFileAccess->expects(self::once())->method('writeAll');
 		

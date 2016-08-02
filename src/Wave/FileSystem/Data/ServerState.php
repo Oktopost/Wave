@@ -2,11 +2,13 @@
 namespace Wave\FileSystem\Data;
 
 
+use Wave\Scope;
+
 use Wave\Base\FileSystem\IFileAccess;
 use Wave\Base\FileSystem\IJsonFileAccess;
 use Wave\Base\FileSystem\Data\IServerState;
 
-use Wave\Scope;
+use Wave\Objects\Package;
 use Wave\Objects\RemoteState;
 
 
@@ -32,8 +34,23 @@ class ServerState implements IServerState
 	 */
 	public function load()
 	{
-		$this->access->readAll();
-		return new RemoteState();
+		$data = $this->access->readAll(true);
+		$state = new RemoteState();
+		
+		if (!isset($data->packages))
+			$data->packages = [];
+			
+		foreach ($data->packages as $packageData)
+		{
+			$package = new Package();
+			$package->fromArray($packageData);
+			$state->Staged[] = $package;
+		}
+		
+		if (isset($data->deployed))
+			$state->setDeployed($data->deployed);
+		
+		return $state;
 	}
 	
 	/**
@@ -41,6 +58,18 @@ class ServerState implements IServerState
 	 */
 	public function save(RemoteState $state)
 	{
-		$this->access->writeAll('a');
+		$data = new \stdClass();
+		
+		$data->packages = [];
+		
+		if ($state->hasDeployed())
+			$data->deployed = $state->Deployed->Name;
+		
+		foreach ($state->Staged as $package)
+		{
+			$data->packages[] = $package->toArray();
+		}
+		
+		$this->access->writeAll($data);
 	}
 }
