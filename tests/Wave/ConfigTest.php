@@ -16,7 +16,7 @@ class ConfigTest extends \PHPUnit_Framework_TestCase
 	
 	public function test_getAll()
 	{
-		$this->assertEquals(
+		self::assertEquals(
 			[
 				'a'		=> '3',
 				'key1'	=> 'some_value',
@@ -27,9 +27,9 @@ class ConfigTest extends \PHPUnit_Framework_TestCase
 	
 	public function test_get()
 	{
-		$this->assertEquals('3', $this->create()->get('a'));
-		$this->assertEquals('some_value', $this->create()->get('key1'));
-		$this->assertEquals('NOT FOUND', $this->create()->get('key3', 'NOT FOUND'));
-		$this->assertNull($this->create()->get('key4'));
+		self::assertEquals('3', $this->create()->get('a'));
+		self::assertEquals('some_value', $this->create()->get('key1'));
+		self::assertEquals('NOT FOUND', $this->create()->get('key3', 'NOT FOUND'));
+		self::assertNull($this->create()->get('key4'));
 	}
 }

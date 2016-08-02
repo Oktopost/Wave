@@ -60,14 +60,14 @@ class PhingBuilderTest extends \PHPUnit_Framework_TestCase
 	public function test_skeleton()
 	{
 		Scope::testSkeleton()->clear();
-		$this->assertInstanceOf(PhingBuilder::class, Scope::skeleton(IPhingBuilder::class));
+		self::assertInstanceOf(PhingBuilder::class, Scope::skeleton(IPhingBuilder::class));
 	}
 	
 	
 	public function test_setConfig_ReturnSelf()
 	{
 		$p = new PhingBuilder();
-		$this->assertSame($p, $p->setConfig(new PhingConfig()));
+		self::assertSame($p, $p->setConfig(new PhingConfig()));
 	}
 	
 	
@@ -98,7 +98,7 @@ class PhingBuilderTest extends \PHPUnit_Framework_TestCase
 		$p->setConfig($this->getValidConfig());
 		$p->build();
 		
-		$this->assertFileExists($logFile);
+		self::assertFileExists($logFile);
 	}
 	
 	public function test_build_LogFileFilledWithPhingLog()
@@ -112,7 +112,7 @@ class PhingBuilderTest extends \PHPUnit_Framework_TestCase
 		$p->setConfig($this->getValidConfig());
 		$p->build();
 		
-		$this->assertTrue(strlen(file_get_contents($logFile)) > 0);
+		self::assertTrue(strlen(file_get_contents($logFile)) > 0);
 	}
 	
 	/**
@@ -167,6 +167,6 @@ class PhingBuilderTest extends \PHPUnit_Framework_TestCase
 		$p->setConfig($this->getValidConfig());
 		$p->build();
 		
-		$this->assertFileExists($this->getPathToCreatedFileByPhingBuild());
+		self::assertFileExists($this->getPathToCreatedFileByPhingBuild());
 	}
 }

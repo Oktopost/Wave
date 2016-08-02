@@ -98,7 +98,7 @@ class SourceTest extends \PHPUnit_Framework_TestCase
 		$config->method('get')->willReturn('git');
 		$factory->method('getConnector')->willReturn($sourceConn);
 		
-		$this->assertSame($sourceConn, $this->getSource()->connector());
+		self::assertSame($sourceConn, $this->getSource()->connector());
 	}
 	
 	/**

@@ -11,16 +11,16 @@ class DataTest extends \PHPUnit_Framework_TestCase
 {
 	public function test_localPackages()
 	{
-		$this->assertInstanceOf(LocalPackages::class, (new Data())->localPackages());
+		self::assertInstanceOf(LocalPackages::class, (new Data())->localPackages());
 	}
 	
 	public function test_localServerState()
 	{
-		$this->assertInstanceOf(ServerState::class, (new Data())->localServerState('a'));
+		self::assertInstanceOf(ServerState::class, (new Data())->localServerState('a'));
 	}
 	
 	public function test_servers()
 	{
-		$this->assertInstanceOf(Servers::class, (new Data())->servers());
+		self::assertInstanceOf(Servers::class, (new Data())->servers());
 	}
 }

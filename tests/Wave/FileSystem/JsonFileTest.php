@@ -18,7 +18,7 @@ class JsonFileTest extends \PHPUnit_Framework_TestCase
 		if (file_exists($name))
 			unlink($name);
 		
-		$this->assertNotFalse(file_put_contents($name, $data));
+		self::assertNotFalse(file_put_contents($name, $data));
 		return $name;
 	}
 	
@@ -82,7 +82,7 @@ class JsonFileTest extends \PHPUnit_Framework_TestCase
 		
 		$jf = $this->createJsonFile(json_encode($data, JSON_PRETTY_PRINT));
 		
-		$this->assertEquals($data, $jf->readFile());
+		self::assertEquals($data, $jf->readFile());
 	}
 	
 	
@@ -102,7 +102,7 @@ class JsonFileTest extends \PHPUnit_Framework_TestCase
 		$fileName = $this->createFileWith('[]');
 		$jf->setTarget($fileName);
 		
-		$this->assertInstanceOf(JsonFileTest_Help::class, $jf->loadFile(JsonFileTest_Help::class));
+		self::assertInstanceOf(JsonFileTest_Help::class, $jf->loadFile(JsonFileTest_Help::class));
 	}
 	
 	public function test_loadFile_ValidFile_ParametersLoaded()
@@ -122,7 +122,7 @@ class JsonFileTest extends \PHPUnit_Framework_TestCase
 		$object = $jf->loadFile(JsonFileTest_Help::class);
 		
 		
-		$this->assertEquals($data, $object->toArray());
+		self::assertEquals($data, $object->toArray());
 	}
 	
 	
@@ -144,11 +144,11 @@ class JsonFileTest extends \PHPUnit_Framework_TestCase
 		
 		$result = $jf->loadAll(JsonFileTest_Help::class);
 		
-		$this->assertTrue(is_array($result));
-		$this->assertCount(2, $result);
+		self::assertTrue(is_array($result));
+		self::assertCount(2, $result);
 		
-		$this->assertInstanceOf(JsonFileTest_Help::class, $result[0]);
-		$this->assertInstanceOf(JsonFileTest_Help::class, $result[1]);
+		self::assertInstanceOf(JsonFileTest_Help::class, $result[0]);
+		self::assertInstanceOf(JsonFileTest_Help::class, $result[1]);
 	}
 	
 	public function test_loadAll_ValidFile_ParametersLoaded()
@@ -177,7 +177,7 @@ class JsonFileTest extends \PHPUnit_Framework_TestCase
 		$objects = $jf->loadAll(JsonFileTest_Help::class);
 		
 		
-		$this->assertEquals($data, LiteObject::allToArray($objects));
+		self::assertEquals($data, LiteObject::allToArray($objects));
 	}
 	
 	
@@ -190,7 +190,7 @@ class JsonFileTest extends \PHPUnit_Framework_TestCase
 		$jf = $this->createJsonFile('', '/tmp/JsonFileTest.json');
 		$jf->save($object);
 		
-		$this->assertEquals(
+		self::assertEquals(
 			json_encode($object->toArray(), JSON_PRETTY_PRINT), 
 			file_get_contents('/tmp/JsonFileTest.json'));
 	}
@@ -201,7 +201,7 @@ class JsonFileTest extends \PHPUnit_Framework_TestCase
 		$jf = $this->createJsonFile('', '/tmp/JsonFileTest.json');
 		$jf->saveAll([]);
 		
-		$this->assertEquals('[]', file_get_contents('/tmp/JsonFileTest.json'));
+		self::assertEquals('[]', file_get_contents('/tmp/JsonFileTest.json'));
 	}
 	
 	public function test_saveAll_HasObjects_DataSavedCorrectly()
@@ -217,7 +217,7 @@ class JsonFileTest extends \PHPUnit_Framework_TestCase
 		$jf = $this->createJsonFile('', '/tmp/JsonFileTest.json');
 		$jf->saveAll([$objectA, $objectB]);
 		
-		$this->assertEquals(
+		self::assertEquals(
 			json_encode(
 				LiteObject::allToArray([$objectA, $objectB]), 
 				JSON_PRETTY_PRINT

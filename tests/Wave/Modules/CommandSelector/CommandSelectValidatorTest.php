@@ -85,7 +85,7 @@ class CommandSelectValidatorTest extends \PHPUnit_Framework_TestCase
 		$this->mockFactory();
 		$this->mockQueue();
 		
-		$this->assertInstanceOf(
+		self::assertInstanceOf(
 			CommandSelectValidator::class, 
 			Scope::skeleton(ICommandSelectValidator::class));
 	}
@@ -94,7 +94,7 @@ class CommandSelectValidatorTest extends \PHPUnit_Framework_TestCase
 	public function test_setQueue_ReturnSelf()
 	{
 		$a = $this->getCommandSelectValidator();
-		$this->assertSame($a, $a->setQueue($this->queue));
+		self::assertSame($a, $a->setQueue($this->queue));
 	}
 	
 	
@@ -141,7 +141,7 @@ class CommandSelectValidatorTest extends \PHPUnit_Framework_TestCase
 			->willReturn(false);
 		
 		$a = $this->getCommandSelectValidator();
-		$this->assertFalse($a->canStart(new StageCommand()));
+		self::assertFalse($a->canStart(new StageCommand()));
 	}
 	
 	public function test_canStart_ValidatorReturnTrue_ReturnTrue()
@@ -151,6 +151,6 @@ class CommandSelectValidatorTest extends \PHPUnit_Framework_TestCase
 			->willReturn(true);
 		
 		$a = $this->getCommandSelectValidator();
-		$this->assertTrue($a->canStart(new StageCommand()));
+		self::assertTrue($a->canStart(new StageCommand()));
 	}
 }

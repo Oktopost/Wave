@@ -10,7 +10,7 @@ class RemoteStateTest extends \PHPUnit_Framework_TestCase
 		$rs->Staged[] = Package::create('a', 'b');
 		$rs->setDeployed('n');
 		
-		$this->assertNull($rs->Deployed);
+		self::assertNull($rs->Deployed);
 	}
 	
 	public function test_setDeployed_NoPackageFoundByPackage_SetToNull()
@@ -19,7 +19,7 @@ class RemoteStateTest extends \PHPUnit_Framework_TestCase
 		$rs->Staged[] = Package::create('a', 'b');
 		$rs->setDeployed(Package::create('a', 'n'));
 		
-		$this->assertNull($rs->Deployed);
+		self::assertNull($rs->Deployed);
 	}
 	
 	public function test_setDeployed_ByName_PackageSet()
@@ -30,7 +30,7 @@ class RemoteStateTest extends \PHPUnit_Framework_TestCase
 		$rs->Staged[] = $p;
 		$rs->setDeployed($p->Name);
 		
-		$this->assertSame($p, $rs->Deployed);
+		self::assertSame($p, $rs->Deployed);
 	}
 	
 	public function test_setDeployed_ByPackage_PackageSet()
@@ -41,7 +41,7 @@ class RemoteStateTest extends \PHPUnit_Framework_TestCase
 		$rs->Staged[] = $p;
 		$rs->setDeployed($p);
 		
-		$this->assertSame($p, $rs->Deployed);
+		self::assertSame($p, $rs->Deployed);
 	}
 	
 	
@@ -50,7 +50,7 @@ class RemoteStateTest extends \PHPUnit_Framework_TestCase
 		$rs = new RemoteState();
 		$rs->Staged[] = Package::create('a', 'b');
 		
-		$this->assertFalse($rs->hasDeployed());
+		self::assertFalse($rs->hasDeployed());
 	}
 	
 	public function test_hasDeployed_Yes_ReturnTrue()
@@ -61,6 +61,6 @@ class RemoteStateTest extends \PHPUnit_Framework_TestCase
 		$rs->Staged[] = $p;
 		$rs->setDeployed($p->Name);
 		
-		$this->assertTrue($rs->hasDeployed());
+		self::assertTrue($rs->hasDeployed());
 	}
 }

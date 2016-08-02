@@ -11,7 +11,7 @@ class StagingStateTest extends \PHPUnit_Framework_TestCase
 		$rs = new StagingState();
 		$rs->Staged[] = $p;
 		
-		$this->assertTrue($rs->has($p->Name));
+		self::assertTrue($rs->has($p->Name));
 	}
 	
 	public function test_has_NotFound_ReturnFalse()
@@ -21,7 +21,7 @@ class StagingStateTest extends \PHPUnit_Framework_TestCase
 		$rs = new StagingState();
 		$rs->Staged[] = $p;
 		
-		$this->assertFalse($rs->has('n'));
+		self::assertFalse($rs->has('n'));
 	}
 	
 	
@@ -32,7 +32,7 @@ class StagingStateTest extends \PHPUnit_Framework_TestCase
 		$rs = new StagingState();
 		$rs->Staged[] = $p;
 		
-		$this->assertSame($p, $rs->get($p->Name));
+		self::assertSame($p, $rs->get($p->Name));
 	}
 	
 	public function test_get_NotFound_ReturnNull()
@@ -42,6 +42,6 @@ class StagingStateTest extends \PHPUnit_Framework_TestCase
 		$rs = new StagingState();
 		$rs->Staged[] = $p;
 		
-		$this->assertNull($rs->get('n'));
+		self::assertNull($rs->get('n'));
 	}
 }

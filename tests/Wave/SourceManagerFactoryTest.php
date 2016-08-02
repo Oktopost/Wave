@@ -27,6 +27,6 @@ class SourceManagerFactoryTest extends \PHPUnit_Framework_TestCase
 	public function test_get_GitType_GitSourceReturned()
 	{
 		$manager = (new SourceConnectorFactory())->getConnector('git');
-		$this->assertInstanceOf(GitSource::class, $manager);
+		self::assertInstanceOf(GitSource::class, $manager);
 	}
 }

@@ -35,6 +35,6 @@ class SourceConnectorFactoryTest extends \PHPUnit_Framework_TestCase
 		Scope::instance()->setConfig($config);
 		
 		$f = new SourceConnectorFactory();
-		$this->assertInstanceOf(GitSource::class, $f->getConnector(SourceType::GIT));
+		self::assertInstanceOf(GitSource::class, $f->getConnector(SourceType::GIT));
 	}
 }

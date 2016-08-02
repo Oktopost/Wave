@@ -24,6 +24,9 @@ class LocalPackages implements ILocalPackages
 	 */
 	protected function readPackages(\stdClass $data, StagingState $into)
 	{
+		if (!isset($data->packages))
+			return;
+		
 		foreach ($data->packages as $packageData)
 		{
 			$package = new Package();
