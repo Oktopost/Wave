@@ -2,6 +2,7 @@
 namespace Wave\Base\FileSystem;
 
 
+use Wave\Base\FileSystem\Data\IServers;
 use Wave\Base\FileSystem\Data\IServerState;
 use Wave\Base\FileSystem\Data\ILocalPackages;
 
@@ -21,4 +22,9 @@ interface IData
 	 * @return IServerState
 	 */
 	public function localServerState($serverName);
+	
+	/**
+	 * @return IServers
+	 */
+	public function servers();
 }
