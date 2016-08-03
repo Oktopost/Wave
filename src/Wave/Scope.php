@@ -38,7 +38,7 @@ class Scope
 			->enableKnot()
 			->setConfigLoader(
 				new PrefixDirectoryConfigLoader([
-					'Wave' => realpath(__DIR__ . '/../../skeleton')
+					'Wave' => __DIR__ . '/../../skeleton'
 				])
 			);
 		

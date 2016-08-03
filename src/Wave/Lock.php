@@ -18,7 +18,15 @@ class Lock implements ILock, ISingleton
 	{
 		return new FileLockEntity(Scope::instance()->config('lock.source', 'source.lock'));
 	}
-
+	
+	/**
+	 * @return ILockEntity
+	 */
+	public function commands()
+	{
+		return new FileLockEntity(Scope::instance()->config('lock.source', 'commands.lock'));
+	}
+	
 	/**
 	 * @param string $serverName
 	 * @return ILockEntity

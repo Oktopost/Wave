@@ -3,12 +3,13 @@ namespace Wave\Base\Module\CommandSelector;
 
 
 use Skeleton\Type;
+use Wave\Base\Commands\ICommandManager;
 use Wave\Scope;
-use Wave\Base\Module\CommandSelector;
+use Wave\Commands\CommandManager;
 use Wave\Module\CommandSelector\TypeValidatorFactory;
 use Wave\Module\CommandSelector\CommandSelectValidator;
 
 
-Scope::skeleton(ICommandSelector::class, CommandSelector::class);
-Scope::skeleton(ICommandSelectValidator::class, CommandSelectValidator::class);
-Scope::skeleton(ICommandTypeSelectValidatorFactory::class, TypeValidatorFactory::class);
+Scope::skeleton(ICommandManager::class,					CommandManager::class);
+Scope::skeleton(ICommandSelectValidator::class,				CommandSelectValidator::class);
+Scope::skeleton(ICommandTypeSelectValidatorFactory::class,	TypeValidatorFactory::class);

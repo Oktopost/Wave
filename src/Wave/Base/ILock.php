@@ -11,6 +11,11 @@ interface ILock
 	 * @return ILockEntity
 	 */
 	public function source();
+	
+	/**
+	 * @return ILockEntity
+	 */
+	public function commands();
 
 	/**
 	 * @param string $serverName
