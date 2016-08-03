@@ -35,7 +35,16 @@ class LocalFileAccess implements ILocalFileAccess
 			throw new FileException($this->path, 'Failed to read from file.');
 		}
 		
-		return file_get_contents($this->path);
+		$h = fopen($this->path, 'r');
+		
+		if ($h === false)
+			throw new FileException($this->path, 'Failed to read from file.');
+		
+		flock($h, LOCK_EX);
+		$data = fread($h, PHP_INT_MAX);
+		fclose($h);
+		
+		return $data;
 	}
 
 	/**
@@ -43,6 +52,13 @@ class LocalFileAccess implements ILocalFileAccess
 	 */
 	public function writeAll($data)
 	{
-		file_put_contents($this->path, $data);
+		$h = fopen($this->path, 'w');
+		
+		if ($h === false)
+			throw new FileException($this->path, 'Failed to write to file.');
+		
+		flock($h, LOCK_EX);
+		fwrite($h, $data);
+		fclose($h);
 	}
 }

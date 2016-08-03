@@ -2,9 +2,10 @@
 namespace Wave\Module;
 
 
-use Wave\Commands\CommandManager;
 use Wave\Base\Module\Processor\ICommandProcessor;
 use Wave\Base\Commands\Command;
+
+use Wave\Scope;
 
 
 /**
@@ -14,9 +15,9 @@ class CommandProcessor implements ICommandProcessor
 {
 	/** 
 	 * @magic
-	 * @var  
+	 * @var \Wave\Commands\CommandManager
 	 */
-	private $commandSelector;
+	private $commandManager;
 	
 	/**
 	 * @magic
@@ -36,14 +37,6 @@ class CommandProcessor implements ICommandProcessor
 			->execute();
 	}
 	
-	/**
-	 * @param Command $command
-	 */
-	private function remove(Command $command)
-	{
-		
-	}
-	
 	
 	/**
 	 * @param Command $command
@@ -52,11 +45,13 @@ class CommandProcessor implements ICommandProcessor
 	{
 		try
 		{
+			Scope::instance()->log()->info('Executing command: @0 type @1', $command->ID, $command->Type);
 			$this->safeExecute($command);
+			Scope::instance()->log()->info('Command complete: @0 type @1', $command->ID, $command->Type);
 		}
 		finally
 		{
-			$this->remove($command);
+			$this->commandManager->remove($command);
 		}
 	}
 }

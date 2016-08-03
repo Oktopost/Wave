@@ -1,5 +1,5 @@
 <?php
-namespace Wave\Module\Processor\TypeProcessor;
+namespace Wave\Module\Processor\TypeProcessors;
 
 
 use Wave\Enum\CommandType;

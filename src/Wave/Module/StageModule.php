@@ -68,7 +68,7 @@ class StageModule implements IStage
 			$scriptRunner->runPreStage($this->connector, $this->package);
 			
 			$dir = $localStaging->getDirectoryForPackage($this->package);
-			$this->connector->transferPackage($this->package, $dir);
+			$this->connector->transferPackage($this->package);
 			
 			$localPackages->get($this->package->Name)->touch();
 			$remotePackages->Staged[] = $this->package;
